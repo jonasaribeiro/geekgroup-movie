@@ -1,13 +1,13 @@
 import { GlobalStyles } from './styles/global';
 import Router from './routes';
-import { RegisterPage } from './pages/RegisterPage';
+import { UserProvider } from './provider/UserContext';
 
 function App() {
     return (
-        <>
+        <UserProvider>
             <GlobalStyles />
             <Router />
-        </>
+        </UserProvider>
     );
 }
 
