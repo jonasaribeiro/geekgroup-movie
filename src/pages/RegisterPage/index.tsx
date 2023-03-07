@@ -23,7 +23,7 @@ export const RegisterPage = () => {
             <Header>
                 <button> Home </button>
             </Header>
-
+            <p> teste </p>
             <form>
                 <div className='form_box--title'>
                     <h2>Cadastre a sua conta</h2>
