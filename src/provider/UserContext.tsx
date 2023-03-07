@@ -4,6 +4,7 @@ interface iUser {
     name: string;
     email: string;
     img: string;
+    id: string;
 }
 
 interface iMovie {
@@ -18,9 +19,9 @@ interface iUserContext {
     setSavedMovies: React.Dispatch<React.SetStateAction<iMovie[]>>;
 }
 
-const UserContext = createContext({} as iUserContext);
+export const UserContext = createContext({} as iUserContext);
 
-const UserProvider = ({ children }: { children: ReactNode }) => {
+export const UserProvider = ({ children }: { children: ReactNode }) => {
     const [user, setUser] = useState({} as iUser);
     const [savedMovies, setSavedMovies] = useState({} as iMovie[]);
 

@@ -11,14 +11,6 @@ export const Container1 = styled.div`
     flex-direction: column;
 `;
 
-export const Container2 = styled.div`
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    justify-content: center;
-    gap: 10px;
-`;
-
 export const Main = styled.main`
     border-radius: 8px;
     display: flex;
@@ -44,17 +36,6 @@ export const MovielistTitle = styled.h3`
     font-weight: 800;
     color: white;
     text-align: center;
-`;
-
-export const ProfileImg = styled.img`
-    height: 220px;
-    width: 220px;
-    border-radius: 20px;
-`;
-
-export const StyledText = styled.p`
-    color: white;
-    font-size: 16px;
 `;
 
 export const ButtonLogout = styled.button`

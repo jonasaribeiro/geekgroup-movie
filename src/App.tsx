@@ -1,13 +1,13 @@
 import { GlobalStyles } from './styles/global';
 import Router from './routes';
-import { ProfilePage } from './pages/Profile/profile';
+import { UserProvider } from './provider/UserContext';
 
 function App() {
     return (
-        <>
+        <UserProvider>
             <GlobalStyles />
-            <ProfilePage />
-        </>
+            <Router />
+        </UserProvider>
     );
 }
 

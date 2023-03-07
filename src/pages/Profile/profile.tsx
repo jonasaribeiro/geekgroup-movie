@@ -1,29 +1,24 @@
 import { Header } from '../../components/header/header';
 import {
-    Container2,
     Container1,
     Main,
     MovieList,
     MovielistTitle,
-    ProfileImg,
-    StyledText,
     ButtonLogout,
 } from './profile.styled';
-import { MovieLI } from './components/MovieLi';
-import profileImg from '../../../.BaseTest/profileimg.svg';
+import { ProfileInfo } from './components/ProfileInfo/ProfileInfo';
+import { MovieLI } from './components/MovieLI/MovieLi';
+import { useContext } from 'react';
+import { UserContext } from '../../provider/UserContext';
 
 export const ProfilePage = () => {
+    const { savedMovies, setSavedMovies } = useContext(UserContext);
+
     return (
         <>
             <Container1>
                 <Main>
-                    <Container2>
-                        <ProfileImg src={profileImg} alt='' />
-                        <StyledText>Nome: Jucelinio biruleibe silve</StyledText>
-                        <StyledText>
-                            Email: jucelinoMatador@gmail.com
-                        </StyledText>
-                    </Container2>
+                    <ProfileInfo />
                     <MovielistTitle>Filmes Salvos: 15</MovielistTitle>
                     <MovieList>
                         <MovieLI />
