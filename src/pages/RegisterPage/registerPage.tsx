@@ -1,12 +1,10 @@
-import { Input } from '../../components/Input';
+import { Input } from '../../components/Input/input';
 import { useForm } from 'react-hook-form';
-import { UseFormRegisterReturn, FieldError } from 'react-hook-form';
-import { TInputProps } from '../../components/Input';
+import { TInputProps } from '../../components/Input/input';
 import { StyledRegisterPage } from './style';
-import { Header } from '../../components/header';
+import { Header } from '../../components/header/header';
 import { Img } from '../../components/header/header.styled';
 import logo from '../../assets/img/logo.svg';
-import { useEffect } from 'react';
 
 export const RegisterPage = () => {
     const {
@@ -21,9 +19,9 @@ export const RegisterPage = () => {
             </figure>
 
             <Header>
-                <button> Home </button>
+                <button className="home_btn" > Home </button>
             </Header>
-            <p> teste </p>
+
             <form>
                 <div className='form_box--title'>
                     <h2>Cadastre a sua conta</h2>
@@ -63,15 +61,15 @@ export const RegisterPage = () => {
                         register={register('ConfirmPassword')}
                     />
                     <Input
-                        label='Confirmar senha'
-                        id='ConfirmPassword'
-                        type='password'
-                        placeholder='Digite seu email'
-                        error={errors.ConfirmPassword}
-                        register={register('ConfirmPassword')}
+                        label='url da imagem de perfil'
+                        id='urlImage'
+                        type='text'
+                        placeholder='Insira a url da imagem'
+                        error={errors.urlImage}
+                        register={register('urlImage')}
                     />
                 </div>
-                <button>Cadastrar</button>
+                <button type='submit'>Cadastrar</button>
             </form>
         </StyledRegisterPage>
     );
