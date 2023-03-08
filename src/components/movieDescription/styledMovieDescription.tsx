@@ -17,18 +17,24 @@ export const StyledMovieDescription = styled.div`
 
         .saveButton {
             display: flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
             h2 {
                 color: #ffffff;
                 font-size: 16px;
             }
         }
     }
-    .poster {
+    .posterDiv {
         width: 100%;
-        height: 172px;
-        background-color: red;
-        margin-bottom: 15px;
+        .poster {
+            width: 100%;
+            object-fit: contain;
+            margin-bottom: 15px;
+        }
     }
+
     .bottomPost {
         margin-bottom: 20px;
         justify-content: space-between;
@@ -53,9 +59,10 @@ export const StyledMovieDescription = styled.div`
             color: #ffffff;
             background: linear-gradient(
                 180deg,
-                #131210 0%,
+                #be6b00 0%,
                 rgba(255, 52, 0, 0.39) 100%
             );
+            border-radius: 70px;
             border: none;
             box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
         }
@@ -79,6 +86,17 @@ export const StyledMovieDescription = styled.div`
             color: #ffffff;
             line-height: 150%;
             font-size: 16px;
+        }
+    }
+
+    @media (min-width: 768px) {
+        .bottomPost {
+            justify-content: space-between;
+            flex-direction: row;
+            .subinformationDiv {
+                width: 50vw;
+                max-width: 420px;
+            }
         }
     }
 `;
