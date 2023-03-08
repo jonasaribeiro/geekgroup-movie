@@ -2,7 +2,7 @@ import { Routes, Route } from 'react-router-dom';
 import { ProfilePage } from './pages/Profile/profile';
 import { ProtectedPages } from './pages/.ProtectedPages/ProtectedPages';
 import { LogoffPages } from './pages/.LogoffPages/LodoffPages';
-import { RegisterPage } from './pages/RegisterPage/RegisterPage';
+import { RegisterPage } from './pages/RegisterPage/registerPage';
 
 const Router = () => (
     <Routes>

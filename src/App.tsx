@@ -7,6 +7,7 @@ function App() {
         <UserProvider>
             <GlobalStyles />
             <Router />
+            
         </UserProvider>
     );
 }

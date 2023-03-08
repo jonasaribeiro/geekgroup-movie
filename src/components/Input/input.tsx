@@ -1,6 +1,6 @@
 import { FieldError } from 'react-hook-form';
 import { UseFormRegisterReturn } from 'react-hook-form/dist/types';
-import { StyledInput } from "./style.styled";
+import { StyledInput } from './style.styled';
 
 export type TInputProps = {
     label: string;
