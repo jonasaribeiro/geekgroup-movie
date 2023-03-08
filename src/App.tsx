@@ -1,14 +1,15 @@
 import { GlobalStyles } from './styles/global';
 import Router from './routes';
+import 'react-toastify/ReactToastify.css';
 import { UserProvider } from './provider/UserContext';
-import { MoviePage } from './pages/MoviePage/moviepage';
+import { ToastContainer } from 'react-toastify';
 
 function App() {
     return (
         <UserProvider>
             <GlobalStyles />
-            <MoviePage/>
-            {/* <Router/> */}
+            <Router />
+            <ToastContainer />
         </UserProvider>
     );
 }
