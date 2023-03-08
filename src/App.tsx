@@ -5,8 +5,8 @@ import { UserProvider } from './provider/UserContext';
 function App() {
     return (
         <UserProvider>
-            <GlobalStyles/>
-            <Router />   
+            <GlobalStyles />
+            <Router />
         </UserProvider>
     );
 }

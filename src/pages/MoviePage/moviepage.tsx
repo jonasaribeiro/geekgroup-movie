@@ -10,6 +10,7 @@ export const MoviePage = () => {
             <StyledMoviePage>
                 <header>Aqui esta o header</header>
                 <main>
+                    <p>teste</p>
                     <div className='container'>
                         <MovieDescription />
 
