@@ -3,10 +3,11 @@ import { Header } from '../../components/header/header';
 import { MovieDescription } from '../../components/movieDescription';
 import { StyledMoviePage } from './StyledMoviePage';
 import profile from '../../assets/img/profileHeaderImg.svg';
-import { Link } from 'react-router-dom';
+import { Link} from 'react-router-dom';
 export {};
 
 export const MoviePage = () => {
+
     return (
         <>
             <StyledMoviePage>
@@ -29,8 +30,7 @@ export const MoviePage = () => {
                             <div className='postCommentDiv'>
                                 <textarea
                                     placeholder='Deixe seu comentário...'
-                                    name='comentário'
-                                />
+                      />
                                 <button type='submit'>Comentar</button>
                             </div>
                         </form>
