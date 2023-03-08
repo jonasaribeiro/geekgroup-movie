@@ -6,10 +6,10 @@ export const ProtectedPages = () => {
     const { user } = useContext(UserContext);
     const navigate = useNavigate();
     useEffect(() => {
-        if (user.id) {
+        if (!user.accessToken) {
             navigate('/');
         }
     }, [user]);
 
-    return user.id ? <Outlet /> : null;
+    return user.accessToken ? <Outlet /> : null;
 };

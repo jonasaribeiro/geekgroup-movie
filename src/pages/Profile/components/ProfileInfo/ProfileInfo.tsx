@@ -7,8 +7,9 @@ export const ProfileInfo = () => {
 
     return (
         <Container2>
-            <StyledText>Nome: Jucelinio biruleibe silve</StyledText>
-            <StyledText>Email: jucelinoMatador@gmail.com</StyledText>
+            <ProfileImg src={user.user.img} />
+            <StyledText>{user.user.name}</StyledText>
+            <StyledText>{user.user.email}</StyledText>
         </Container2>
     );
 };

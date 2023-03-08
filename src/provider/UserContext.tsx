@@ -1,14 +1,20 @@
-import { ReactNode, createContext, useState } from 'react';
+import { ReactNode, createContext, useEffect, useState } from 'react';
+import { jsonApi } from '../services/api';
+import { toast } from 'react-toastify';
 
-interface iUser {
-    name: string;
-    email: string;
-    img: string;
-    id: string;
+export interface iUser {
+    accessToken: string;
+    user: {
+        email: string;
+        name: string;
+        img: string;
+        id: number;
+    };
 }
 
-interface iMovie {
-    title: string;
+export interface iMovie {
+    movieId: Number;
+    userId: Number;
     id: Number;
 }
 
@@ -24,6 +30,29 @@ export const UserContext = createContext({} as iUserContext);
 export const UserProvider = ({ children }: { children: ReactNode }) => {
     const [user, setUser] = useState({} as iUser);
     const [savedMovies, setSavedMovies] = useState({} as iMovie[]);
+
+    useEffect(() => {
+        const getUser = () => {};
+        getUser();
+    }, []);
+
+    useEffect(() => {
+        const getSavedMovies = () => {
+            jsonApi
+                .get('/savedMovies', {
+                    headers: { Authorization: `Bearer ${user.accessToken}` },
+                })
+                .then((data) => setSavedMovies(data.data))
+                .catch((err) =>
+                    toast.error(
+                        `Ocorreu um erro ao tentar recuperar seus filmes salvos: ${err}`
+                    )
+                );
+        };
+        if (user.accessToken) {
+            getSavedMovies();
+        }
+    }, [user]);
 
     return (
         <UserContext.Provider

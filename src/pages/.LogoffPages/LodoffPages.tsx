@@ -6,10 +6,10 @@ export const LogoffPages = () => {
     const { user } = useContext(UserContext);
     const navigate = useNavigate();
     useEffect(() => {
-        if (user.id) {
+        if (user.accessToken) {
             navigate('/');
         }
     }, [user]);
 
-    return user.id ? null : <Outlet />;
+    return user.accessToken ? null : <Outlet />;
 };
