@@ -1,5 +1,3 @@
-import { Input } from '../../components/Input/input';
-import { useForm } from 'react-hook-form';
 import { StyledRegisterPage } from './style';
 import { Header } from '../../components/header/header';
 import { Img } from '../../components/header/header.styled';
@@ -13,12 +11,11 @@ export const RegisterPage = () => {
     return (
         <StyledRegisterPage>
             <figure>
-                <Img src={logo} alt='' />
+                <Img src={logo} alt='geek group' />
             </figure>
 
             <Header>
                 <button className='home_btn' onClick={() => navigate('/')}>
-                    
                     Home
                 </button>
             </Header>
