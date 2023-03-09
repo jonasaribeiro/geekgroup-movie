@@ -1,9 +1,10 @@
 import { createGlobalStyle } from 'styled-components';
 
 export const GlobalStyles = createGlobalStyle`
+  @import url('https://fonts.googleapis.com/css2?family=Inter');
+  @import url('https://fonts.googleapis.com/css2?family=Roboto');
+
   *{
-    @import url('https://fonts.googleapis.com/css2?family=Inter');
-    @import url('https://fonts.googleapis.com/css2?family=Roboto');
 
     box-sizing: border-box;
     margin: 0;
