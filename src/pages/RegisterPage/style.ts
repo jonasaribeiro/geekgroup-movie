@@ -39,7 +39,14 @@ export const StyledRegisterPage = styled.div`
 
         display: flex;
         flex-direction: column;
-
+        /* div {
+            h2 {
+                font-family: 'Roboto', sans-serif;
+            }
+            p {
+                font-family: 'Inter', sans-serif;
+            }
+        } */
         @media (min-width: 600px) {
             width: 600px;
         }
@@ -76,7 +83,7 @@ export const StyledRegisterPage = styled.div`
         }
 
         button {
-            margin: 10px;
+            margin: 10px 20px;
             border: none;
             border-radius: 4px;
 

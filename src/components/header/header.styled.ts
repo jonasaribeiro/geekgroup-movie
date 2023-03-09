@@ -12,10 +12,10 @@ export const StyledHeader = styled.header`
         position: fixed;
         top: 0;
         left: 0;
-        width: 100%;
+        min-width: 100%;
         display: flex;
         justify-content: space-between;
-        padding: 15px 20px 10px;
+        padding: 15px 20px 10px 0px;
         align-items: center;
         background-image: linear-gradient(
             to right,
