@@ -2,7 +2,11 @@ import { ReactNode } from 'react';
 import logo from '../../assets/img/logo.svg';
 import { Img, StyledHeader } from './header.styled';
 
-export const Header = ({ children }: { children: ReactNode }) => {
+interface TChildrenProps {
+    children: ReactNode;
+}
+
+export const Header = ({ children }: TChildrenProps) => {
     return (
         <StyledHeader>
             <figure>
