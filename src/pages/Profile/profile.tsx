@@ -21,12 +21,15 @@ export const ProfilePage = () => {
                     <ProfileInfo />
                     <MovielistTitle>Filmes Salvos: 15</MovielistTitle>
                     <MovieList>
-                        <MovieLI />
-                        <MovieLI />
-                        <MovieLI />
-                        <MovieLI />
-                        <MovieLI />
-                        <MovieLI />
+                        {savedMovies.length > 0 ? (
+                            savedMovies.map((e) => {
+                                return <MovieLI movieInfo={e} />;
+                            })
+                        ) : (
+                            <h3>
+                                Você não possui nenhum filme salvo em sua lista
+                            </h3>
+                        )}
                     </MovieList>
                 </Main>
             </Container1>

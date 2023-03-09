@@ -1,19 +1,23 @@
-import axios from 'axios';
-import { ReactNode, createContext, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { toast } from 'react-toastify';
-import { TRegisterFormData } from '../components/Form/RegisterForm/register';
+import { ReactNode, createContext, useEffect, useState } from 'react';
 import { jsonApi } from '../services/api';
+import { toast } from 'react-toastify';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+import { TRegisterFormData } from '../components/form/RegisterForm/register';
 
-interface iUser {
-    name: string;
-    email: string;
-    img: string;
-    id: string;
+export interface iUser {
+    accessToken: string;
+    user: {
+        email: string;
+        name: string;
+        img: string;
+        id: number;
+    };
 }
 
-interface iMovie {
-    title: string;
+export interface iMovie {
+    movieId: Number;
+    userId: Number;
     id: Number;
 }
 
@@ -48,6 +52,29 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
             setLoading(true);
         }
     };
+
+    useEffect(() => {
+        const getUser = () => {};
+        getUser();
+    }, []);
+
+    useEffect(() => {
+        const getSavedMovies = () => {
+            jsonApi
+                .get('/savedMovies', {
+                    headers: { Authorization: `Bearer ${user.accessToken}` },
+                })
+                .then((data) => setSavedMovies(data.data))
+                .catch((err) =>
+                    toast.error(
+                        `Ocorreu um erro ao tentar recuperar seus filmes salvos: ${err}`
+                    )
+                );
+        };
+        if (user.accessToken) {
+            getSavedMovies();
+        }
+    }, [user]);
 
     return (
         <UserContext.Provider

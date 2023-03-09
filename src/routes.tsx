@@ -6,9 +6,7 @@ import { RegisterPage } from './pages/RegisterPage/registerPage';
 
 const Router = () => (
     <Routes>
-        {/* LandingPage */}
         <Route path='/' />
-        {/* Pagina de erro */}
         <Route path='*' />
         <Route path='/' element={<ProtectedPages />}>
             <Route path='/movieinfo' />

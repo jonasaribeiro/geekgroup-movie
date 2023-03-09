@@ -33,19 +33,22 @@ export const StyledCommentListCard = styled.li`
             text-align: justify;
             font-size: 16px;
             color: #ffffff;
+            line-height: 150%;
         }
         .likeButton {
             display: flex;
             flex-direction: column;
             align-items: center;
-
+            cursor: pointer;
             p {
                 color: #ffffff;
                 font-size: 20px;
+                text-align: center;
             }
             button {
+                background-color: transparent;
                 img {
-                    background-color: green;
+                    background-color: transparent;
                     height: 30px;
                 }
             }

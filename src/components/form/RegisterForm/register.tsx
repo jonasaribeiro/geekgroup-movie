@@ -5,13 +5,13 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { UserContext } from '../../../provider/UserContext';
 import { Input } from '../../Input/input';
 
-export type TRegisterFormData = {
+export interface TRegisterFormData {
     name: string;
     email: string;
     password: string;
     confirmPassword: string | undefined;
     urlImage?: string;
-};
+}
 
 const schema = yup
     .object({
@@ -48,7 +48,7 @@ export const RegisterForm = () => {
     };
 
     return (
-        <form onSubmit={handleSubmit(onSubmit)} >
+        <form onSubmit={handleSubmit(onSubmit)}>
             <div className='form_box--title'>
                 <h2>Cadastre a sua conta</h2>
                 <p> e tenha acesso alista completa de filmes </p>

@@ -1,4 +1,6 @@
 import { StyledMovieDescription } from './styledMovieDescription';
+import blueHeart from '../../assets/img/blueHeart.svg';
+import poster from '../../assets/img/posterDescription.svg';
 
 export const MovieDescription = () => {
     return (
@@ -7,11 +9,12 @@ export const MovieDescription = () => {
                 <h2>Nome do filme</h2>
                 <div className='saveButton'>
                     <h2>Salvar</h2>
-                    <img src='' alt='salvar' />
+                    <img src={blueHeart} alt='salvar' />
                 </div>
             </div>
-
-            <img className='poster' src='' alt='Poster' />
+            <div className='posterDiv'>
+                <img className='poster' src={poster} alt='Poster' />
+            </div>
 
             <div className='bottomPost'>
                 <div className='subinformationDiv'>
@@ -23,7 +26,7 @@ export const MovieDescription = () => {
             </div>
 
             <div className='sinapseDiv'>
-                <h2 className='Sinapse'>Sinapse</h2>
+                <h2 className='Sinapse'>Sinopse</h2>
                 <p>
                     descricadescricaodescricaodescricaoo descricao descricao v
                     descricao descricao descricao v descricao escricao descricao

@@ -2,7 +2,7 @@ import { StyledRegisterPage } from './style';
 import { Header } from '../../components/header/header';
 import { Img } from '../../components/header/header.styled';
 import logo from '../../assets/img/logo.svg';
-import { RegisterForm } from '../../components/Form/RegisterForm/register';
+import { RegisterForm } from '../../components/form/RegisterForm/register';
 import { useNavigate } from 'react-router-dom';
 
 export const RegisterPage = () => {
