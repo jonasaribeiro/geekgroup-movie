@@ -3,7 +3,7 @@ import { jsonApi } from '../services/api';
 import { toast } from 'react-toastify';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import { TRegisterFormData } from '../components/Form/RegisterForm/register';
+import { TRegisterFormData } from '../components/form/RegisterForm/register';
 
 export interface iUser {
     accessToken: string;

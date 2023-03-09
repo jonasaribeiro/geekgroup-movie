@@ -8,9 +8,6 @@ const Router = () => (
     <Routes>
         <Route path='/' />
         <Route path='*' />
-        <Route path='/' element={<LogoffPages />}>
-            <Route path='/register' />
-        </Route>
         <Route path='/' element={<ProtectedPages />}>
             <Route path='/movieinfo' />
             <Route path='/profile' element={<ProfilePage />} />
