@@ -5,6 +5,8 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { UserContext } from '../../../provider/UserContext';
 import { Input } from '../../input/input';
 
+import { ScaleLoader } from 'react-spinners';
+
 export interface TRegisterFormData {
     name: string;
     email: string;
@@ -32,7 +34,7 @@ const schema = yup
     .required();
 
 export const RegisterForm = () => {
-    const { UserRegister } = useContext(UserContext);
+    const { UserRegister, loading } = useContext(UserContext);
     const {
         register,
         handleSubmit,
@@ -95,7 +97,17 @@ export const RegisterForm = () => {
                     register={register('urlImage')}
                 />
             </div>
-            <button type='submit'>Cadastrar</button>
+            <button type='submit' disabled={loading ? true : false}>
+                {loading ? (
+                    <ScaleLoader
+                        color={'#F8F9FA'}
+                        loading={loading}
+                        height={25}
+                    />
+                ) : (
+                    'Cadastrar'
+                )}
+            </button>
         </form>
     );
 };

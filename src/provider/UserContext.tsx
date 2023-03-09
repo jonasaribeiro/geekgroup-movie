@@ -23,6 +23,7 @@ export interface iMovie {
 
 interface iUserContext {
     user: iUser;
+    loading: boolean;
     setUser: React.Dispatch<React.SetStateAction<iUser>>;
     savedMovies: iMovie[];
     setSavedMovies: React.Dispatch<React.SetStateAction<iMovie[]>>;
@@ -49,7 +50,7 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
                 toast.error('Ops, algo deu errado!');
             }
         } finally {
-            setLoading(true);
+            setLoading(false);
         }
     };
 
@@ -78,7 +79,14 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
 
     return (
         <UserContext.Provider
-            value={{ user, setUser, savedMovies, setSavedMovies, UserRegister }}
+            value={{
+                user,
+                setUser,
+                savedMovies,
+                setSavedMovies,
+                UserRegister,
+                loading,
+            }}
         >
             {children}
         </UserContext.Provider>
