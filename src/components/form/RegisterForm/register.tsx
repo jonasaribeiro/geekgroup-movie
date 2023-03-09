@@ -89,7 +89,7 @@ export const RegisterForm = () => {
                     register={register('confirmPassword')}
                 />
                 <Input
-                    label='url da imagem de perfil'
+                    label='Url da imagem de perfil'
                     id='urlImage'
                     type='text'
                     placeholder='Insira a url da imagem'
