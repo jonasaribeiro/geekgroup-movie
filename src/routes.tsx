@@ -11,7 +11,7 @@ const Router = () => (
             <Route path='/register' />
         </Route>
         <Route path='/' element={<ProtectedPages />}>
-            <Route path='/movieinfo' />
+            <Route path='/movieinfo/:id' />
             <Route path='/profile' element={<ProfilePage />} />
         </Route>
     </Routes>
