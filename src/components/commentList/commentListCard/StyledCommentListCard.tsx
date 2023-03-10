@@ -6,10 +6,12 @@ export const StyledCommentListCard = styled.li`
     display: flex;
     flex-direction: column;
     .top_comment {
+        position: relative;
         margin-bottom: 10px;
         display: flex;
         align-items: center;
         gap: 20px;
+
         img {
             width: 40px;
             height: 40px;
@@ -20,22 +22,9 @@ export const StyledCommentListCard = styled.li`
             color: #ffffff;
             font-size: 18px;
         }
-    }
-
-    .bottom_comment {
-        display: flex;
-        flex-direction: row;
-        align-items: top;
-        gap: 15px;
-        p {
-            width: 100%;
-            height: max-content;
-            text-align: justify;
-            font-size: 16px;
-            color: #ffffff;
-            line-height: 150%;
-        }
         .likeButton {
+            position: absolute;
+            right: 0;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -51,7 +40,28 @@ export const StyledCommentListCard = styled.li`
                     background-color: transparent;
                     height: 30px;
                 }
+                img:active {
+                    position: relative;
+                    scale: 1.2;
+                }
             }
+        }
+    }
+
+    .bottom_comment {
+        margin-left: 60px;
+        display: flex;
+        flex-direction: row;
+        align-items: top;
+        gap: 15px;
+        padding-right: 40px;
+        p {
+            width: 100%;
+            height: max-content;
+            text-align: justify;
+            font-size: 16px;
+            color: #ffffff;
+            line-height: 150%;
         }
     }
 `;

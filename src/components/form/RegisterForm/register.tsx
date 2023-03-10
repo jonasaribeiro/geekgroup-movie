@@ -3,7 +3,7 @@ import { SubmitHandler, useForm } from 'react-hook-form';
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { UserContext } from '../../../provider/UserContext';
-import { Input } from '../../input/input';
+import { Input } from '../../Input/input';
 
 import { ScaleLoader } from 'react-spinners';
 

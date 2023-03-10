@@ -1,29 +1,35 @@
 import { StyledCommentListCard } from './StyledCommentListCard';
 import greyHeart from '../../../assets/img/likeHeartOrange.svg';
 import profilImg from '../../../assets/img/profileComment.svg';
-export const CommentListCard = () => {
+
+interface icommentCard {
+    name: string;
+    img: string;
+    comment: string;
+    likes: number;
+}
+
+export const CommentListCard = ({
+    name,
+    img,
+    comment,
+    likes,
+}: icommentCard) => {
     return (
         <StyledCommentListCard>
             <div className='top_comment'>
-                <img src={profilImg} alt='profileImg' />
-                <h2>Profile name</h2>
-            </div>
-            <div className='bottom_comment'>
-                <p>
-                    Esse filme é nblakc asdaksd alsd Esse filme é nblakc asdaksd
-                    alsd Esse filme é nblakc asdaksd alsd Esse filme é nblakc
-                    asdaksd alsd Esse filme é nblakc asdaksd alsd Esse filme é
-                    nblakc asdaksd alsd Esse filme é nblakc asdaksd alsd Esse
-                    filme é nblakc asdaksd alsda Esse filme é nblakc asdaksd
-                    alsd Esse filme é nblakc asdaksd alsd Esse filme é nblakc
-                    asdaksd alsda
-                </p>
+                <img src={img} alt={name} />
+                <h2>{name}</h2>
                 <div className='likeButton'>
-                    <p>23</p>
+                    <p>{likes}</p>
                     <button>
                         <img src={greyHeart} alt='heartImg' />
                     </button>
                 </div>
+            </div>
+
+            <div className='bottom_comment'>
+                <p>{comment}</p>
             </div>
         </StyledCommentListCard>
     );

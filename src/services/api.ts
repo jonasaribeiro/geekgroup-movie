@@ -8,7 +8,7 @@ export const jsonApi = axios.create({
 });
 
 export const movieApi = axios.create({
-    baseURL: '',
+    baseURL: 'https://api.themoviedb.org/3',
     timeout: 6000,
 });
 

@@ -3,10 +3,12 @@ import { Header } from '../../components/header/header';
 import { MovieDescription } from '../../components/movieDescription';
 import { StyledMoviePage } from './StyledMoviePage';
 import profile from '../../assets/img/profileHeaderImg.svg';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
+import { CommentForm } from '../../components/postCommentForm';
 export {};
 
 export const MoviePage = () => {
+    const { id } = useParams();
     return (
         <>
             <StyledMoviePage>
@@ -22,18 +24,9 @@ export const MoviePage = () => {
                 </Header>
                 <main>
                     <div className='container'>
-                        <MovieDescription />
+                        <MovieDescription movieId={Number(id)} />
 
-                        <form>
-                            <h3>Comentários</h3>
-                            <div className='postCommentDiv'>
-                                <textarea
-                                    placeholder='Deixe seu comentário...'
-                                    name='comentário'
-                                />
-                                <button type='submit'>Comentar</button>
-                            </div>
-                        </form>
+                        <CommentForm />
                         <CommentList />
                     </div>
                 </main>
