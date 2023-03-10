@@ -25,6 +25,8 @@ export const StyledRegisterPage = styled.div`
 
         background-color: #414246;
         color: #f8f9fa;
+
+        font: 14px 'Inter', sans-serif;
     }
 
     form {
@@ -39,7 +41,14 @@ export const StyledRegisterPage = styled.div`
 
         display: flex;
         flex-direction: column;
-
+        div {
+            h2 {
+                font-family: 'Roboto', sans-serif;
+            }
+            p {
+                font-family: 'Inter', sans-serif;
+            }
+        }
         @media (min-width: 600px) {
             width: 600px;
         }
@@ -61,6 +70,8 @@ export const StyledRegisterPage = styled.div`
 
                 label {
                     color: #f8f9fa;
+                    font-family: 'Inter', sans-serif;
+                    font-size: 14px;
                 }
 
                 input {
@@ -76,7 +87,7 @@ export const StyledRegisterPage = styled.div`
         }
 
         button {
-            margin: 10px;
+            margin: 10px 10px;
             border: none;
             border-radius: 4px;
 
@@ -85,6 +96,8 @@ export const StyledRegisterPage = styled.div`
             background-color: #343b41;
 
             color: #f8f9fa;
+
+            font: 14px 'Inter', sans-serif;
         }
     }
 `;

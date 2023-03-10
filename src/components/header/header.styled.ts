@@ -2,20 +2,21 @@ import styled from 'styled-components';
 
 export const StyledHeader = styled.header`
     display: none;
+
     figure {
         display: flex;
         align-items: center;
         justify-content: center;
     }
-    
+
     @media (min-width: 600px) {
         position: fixed;
         top: 0;
         left: 0;
-        width: 100%;
+        min-width: 100%;
         display: flex;
         justify-content: space-between;
-        padding: 15px 20px 10px;
+        padding: 15px 20px 10px 10px;
         align-items: center;
         background-image: linear-gradient(
             to right,
