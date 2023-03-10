@@ -3,7 +3,9 @@ import { SubmitHandler, useForm } from 'react-hook-form';
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { UserContext } from '../../../provider/UserContext';
-import { Input } from '../../Input/input';
+import { Input } from '../../input/input';
+
+import { ScaleLoader } from 'react-spinners';
 
 export interface TRegisterFormData {
     name: string;
@@ -32,7 +34,7 @@ const schema = yup
     .required();
 
 export const RegisterForm = () => {
-    const { UserRegister } = useContext(UserContext);
+    const { UserRegister, loading } = useContext(UserContext);
     const {
         register,
         handleSubmit,
@@ -87,7 +89,7 @@ export const RegisterForm = () => {
                     register={register('confirmPassword')}
                 />
                 <Input
-                    label='url da imagem de perfil'
+                    label='Url da imagem de perfil'
                     id='urlImage'
                     type='text'
                     placeholder='Insira a url da imagem'
@@ -95,7 +97,17 @@ export const RegisterForm = () => {
                     register={register('urlImage')}
                 />
             </div>
-            <button type='submit'>Cadastrar</button>
+            <button type='submit' disabled={loading ? true : false}>
+                {loading ? (
+                    <ScaleLoader
+                        color={'#F8F9FA'}
+                        loading={loading}
+                        height={25}
+                    />
+                ) : (
+                    'Cadastrar'
+                )}
+            </button>
         </form>
     );
 };
