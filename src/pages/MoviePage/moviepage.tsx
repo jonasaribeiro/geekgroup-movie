@@ -5,7 +5,7 @@ import { StyledMoviePage } from './StyledMoviePage';
 import profile from '../../assets/img/profileHeaderImg.svg';
 import { Link, useParams } from 'react-router-dom';
 import { CommentForm } from '../../components/postCommentForm';
-export {};
+
 
 export const MoviePage = () => {
     const { id } = useParams();

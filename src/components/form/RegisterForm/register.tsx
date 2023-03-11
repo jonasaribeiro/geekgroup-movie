@@ -1,9 +1,10 @@
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { UserContext } from '../../../provider/UserContext';
-import { Input } from '../../Input/input';
+import { Input } from '../../input/input';
+import { BsFillLockFill, BsFillUnlockFill } from 'react-icons/bs';
 
 import { ScaleLoader } from 'react-spinners';
 
@@ -35,6 +36,8 @@ const schema = yup
 
 export const RegisterForm = () => {
     const { UserRegister, loading } = useContext(UserContext);
+    const [showPassword, setShowPassword] = useState(false);
+
     const {
         register,
         handleSubmit,
@@ -75,19 +78,32 @@ export const RegisterForm = () => {
                 <Input
                     label='Senha'
                     id='password'
-                    type='password'
+                    type={showPassword ? 'password' : 'text'}
                     placeholder='Digite sua senha'
                     error={errors.password}
                     register={register('password')}
                 />
+                <span
+                    className='lock_img--password'
+                    onClick={() => setShowPassword(!showPassword)}
+                >
+                    {showPassword ? <BsFillLockFill /> : <BsFillUnlockFill />}
+                </span>
+
                 <Input
                     label='Confirmar senha'
                     id='confirmPassword'
-                    type='password'
+                    type={showPassword ? 'password' : 'text'}
                     placeholder='Digite seu email'
                     error={errors.confirmPassword}
                     register={register('confirmPassword')}
                 />
+                <span
+                    className='lock_img--confirmPassword'
+                    onClick={() => setShowPassword(!showPassword)}
+                >
+                    {showPassword ? <BsFillLockFill /> : <BsFillUnlockFill />}
+                </span>
                 <Input
                     label='Url da imagem de perfil'
                     id='urlImage'

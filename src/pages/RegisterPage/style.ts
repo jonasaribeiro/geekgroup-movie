@@ -27,6 +27,10 @@ export const StyledRegisterPage = styled.div`
         color: #f8f9fa;
 
         font: 14px 'Inter', sans-serif;
+        :hover {
+            background-color: #64656b;
+            transition: 0.4s;
+        }
     }
 
     form {
@@ -58,12 +62,14 @@ export const StyledRegisterPage = styled.div`
         }
 
         .form_box--inputs {
+            position: relative;
             padding: 10px;
             display: flex;
             flex-direction: column;
             gap: 20px;
 
             div {
+                position: relative;
                 display: flex;
                 flex-direction: column;
                 gap: 10px;
@@ -80,24 +86,55 @@ export const StyledRegisterPage = styled.div`
                     padding: 5px;
                     border-radius: 4px;
 
+                    outline: none;
+
                     background-color: #343b41;
                     color: #f8f9fa;
+                    :focus {
+                        transition: ease-in-out 0.3s;
+                        box-shadow: 0px 0px 10px #000000;
+                    }
+                }
+            }
+
+            .lock_img--password {
+                position: absolute;
+                left: 253px;
+                top: 196px;
+
+                @media (min-width: 600px) {
+                    left: 543px;
+                }
+            }
+
+            .lock_img--confirmPassword {
+                position: absolute;
+                top: 271px;
+                left: 253px;
+
+                @media (min-width: 600px) {
+                    left: 543px;
                 }
             }
         }
-
         button {
             margin: 10px 10px;
             border: none;
             border-radius: 4px;
 
             height: 30px;
+            min-width: 80px;
 
             background-color: #343b41;
 
             color: #f8f9fa;
 
             font: 14px 'Inter', sans-serif;
+
+            :hover {
+                background-color: #64656b;
+                transition: ease-in-out 0.3s;
+            }
         }
     }
 `;
