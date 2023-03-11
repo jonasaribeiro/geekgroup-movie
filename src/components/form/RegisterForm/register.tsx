@@ -5,8 +5,8 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { UserContext } from '../../../provider/UserContext';
 import { Input } from '../../input/input';
 import { BsFillLockFill, BsFillUnlockFill } from 'react-icons/bs';
-import { MdEmail, MdOutlineLink } from 'react-icons/md'
-import { FaUserAlt } from 'react-icons/fa'
+import { MdEmail, MdOutlineLink } from 'react-icons/md';
+import { FaUserAlt } from 'react-icons/fa';
 
 import { ScaleLoader } from 'react-spinners';
 
@@ -69,7 +69,7 @@ export const RegisterForm = () => {
                     error={errors.name}
                     register={register('name')}
                 />
-                <span className='user_img--name' title='nome do usuário' >
+                <span className='user_img--name' title='nome do usuário'>
                     <FaUserAlt />
                 </span>
                 <Input
@@ -80,7 +80,7 @@ export const RegisterForm = () => {
                     error={errors.email}
                     register={register('email')}
                 />
-                <span className='mail_img' title='email' >
+                <span className='mail_img' title='email'>
                     <MdEmail />
                 </span>
                 <Input
@@ -108,7 +108,11 @@ export const RegisterForm = () => {
                     register={register('confirmPassword')}
                 />
                 <span
-                    title={showPassword ? 'mostrar confirmar senha' : 'esconder confirmar senha'}
+                    title={
+                        showPassword
+                            ? 'mostrar confirmar senha'
+                            : 'esconder confirmar senha'
+                    }
                     className='lock_img--confirmPassword'
                     onClick={() => setShowPassword(!showPassword)}
                 >
@@ -122,7 +126,10 @@ export const RegisterForm = () => {
                     error={errors.urlImage}
                     register={register('urlImage')}
                 />
-                <span className='link_img--urlImg' title='link para foto de perfil'>
+                <span
+                    className='link_img--urlImg'
+                    title='link para foto de perfil'
+                >
                     <MdOutlineLink />
                 </span>
             </div>

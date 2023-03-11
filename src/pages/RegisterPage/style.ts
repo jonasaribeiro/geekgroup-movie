@@ -27,6 +27,8 @@ export const StyledRegisterPage = styled.div`
         color: #f8f9fa;
 
         font: 14px 'Inter', sans-serif;
+        transition: 0.4s;
+
         :hover {
             background-color: #64656b;
             transition: 0.4s;
@@ -45,6 +47,9 @@ export const StyledRegisterPage = styled.div`
 
         display: flex;
         flex-direction: column;
+
+        box-shadow: 0 0 30px #ff5722a8;
+
         div {
             h2 {
                 font-family: 'Roboto', sans-serif;
@@ -90,8 +95,11 @@ export const StyledRegisterPage = styled.div`
 
                     background-color: #343b41;
                     color: #f8f9fa;
+
+                    transition: 0.3s;
+
                     :focus {
-                        transition: ease-in-out 0.3s;
+                        transition: 0.3s;
                         box-shadow: 0px 0px 10px #000000;
                     }
                 }
@@ -120,6 +128,8 @@ export const StyledRegisterPage = styled.div`
                 left: 253px;
                 top: 196px;
 
+                cursor: pointer;
+
                 @media (min-width: 600px) {
                     left: 543px;
                 }
@@ -129,6 +139,8 @@ export const StyledRegisterPage = styled.div`
                 position: absolute;
                 top: 271px;
                 left: 253px;
+
+                cursor: pointer;
 
                 @media (min-width: 600px) {
                     left: 543px;
@@ -158,9 +170,11 @@ export const StyledRegisterPage = styled.div`
 
             font: 14px 'Inter', sans-serif;
 
+            transition: 0.3s;
+
             :hover {
                 background-color: #64656b;
-                transition: ease-in-out 0.3s;
+                transition: 0.3s;
             }
         }
     }
