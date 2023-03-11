@@ -103,7 +103,7 @@ export const RegisterForm = () => {
                     label='Confirmar senha'
                     id='confirmPassword'
                     type={showPassword ? 'password' : 'text'}
-                    placeholder='Digite seu email'
+                    placeholder='confirme sua senha'
                     error={errors.confirmPassword}
                     register={register('confirmPassword')}
                 />
