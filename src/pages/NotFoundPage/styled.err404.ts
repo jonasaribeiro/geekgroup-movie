@@ -2,12 +2,11 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 export const StyledNotFoudPage = styled.div`
-    background-image: url('src\assets\img\notfound.svg') cover;
-    /* img {
+    img {
         position: relative;
         height: 100%;
         width: 100%;
-    } */
+    }
 `;
 
 export const StyledLinkSendMeBack = styled(Link)`
@@ -15,7 +14,8 @@ export const StyledLinkSendMeBack = styled(Link)`
     height: 50px;
     width: 117px;
     left: 0;
-    margin: 150px;
+    top: 0;
+
     background: orange;
     text-align: center;
     padding: 15px;

@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom';
 import NotFound from '../../assets/img/notfound.svg';
 import { StyledLinkSendMeBack, StyledNotFoudPage } from './styled.err404';
 
