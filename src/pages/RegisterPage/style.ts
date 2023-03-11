@@ -96,6 +96,24 @@ export const StyledRegisterPage = styled.div`
                     }
                 }
             }
+            .user_img--name {
+                position: absolute;
+                left: 253px;
+                top: 44px;
+
+                @media (min-width: 600px) {
+                    left: 543px;
+                }
+            }
+            .mail_img {
+                position: absolute;
+                top: 120px;
+                left: 253px;
+
+                @media (min-width: 600px) {
+                    left: 543px;
+                }
+            }
 
             .lock_img--password {
                 position: absolute;
@@ -111,6 +129,15 @@ export const StyledRegisterPage = styled.div`
                 position: absolute;
                 top: 271px;
                 left: 253px;
+
+                @media (min-width: 600px) {
+                    left: 543px;
+                }
+            }
+            .link_img--urlImg {
+                position: absolute;
+                left: 253px;
+                top: 348px;
 
                 @media (min-width: 600px) {
                     left: 543px;
