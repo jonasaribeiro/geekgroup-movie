@@ -18,13 +18,18 @@ export const StyledRegisterPage = styled.div`
 
     .home_btn {
         height: 30px;
-        width: 50px;
+        width: 106px;
 
         border: none;
         border-radius: 8px;
+        padding: 5px;
 
         background-color: #414246;
         color: #f8f9fa;
+
+        display: flex;
+        padding: 5px;
+        align-items: center;
 
         font: 14px 'Inter', sans-serif;
         transition: 0.4s;
@@ -32,6 +37,10 @@ export const StyledRegisterPage = styled.div`
         :hover {
             background-color: #64656b;
             transition: 0.4s;
+        }
+
+        p {
+            margin-left: 12px;
         }
     }
 

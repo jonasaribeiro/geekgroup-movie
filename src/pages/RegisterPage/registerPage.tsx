@@ -4,8 +4,7 @@ import { Img } from '../../components/header/header.styled';
 import logo from '../../assets/img/logo.svg';
 import { RegisterForm } from '../../components/form/RegisterForm/register';
 import { useNavigate } from 'react-router-dom';
-import { useContext } from 'react';
-import { UserContext } from '../../provider/UserContext';
+import { RiHome4Line } from 'react-icons/ri';
 
 export const RegisterPage = () => {
     const navigate = useNavigate();
@@ -18,7 +17,8 @@ export const RegisterPage = () => {
 
             <Header>
                 <button className='home_btn' onClick={() => navigate('/')}>
-                    Home
+                    <RiHome4Line />
+                    <p>Home</p>
                 </button>
             </Header>
             <RegisterForm />
