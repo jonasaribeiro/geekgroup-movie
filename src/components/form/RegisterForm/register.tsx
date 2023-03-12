@@ -38,7 +38,8 @@ const schema = yup
 
 export const RegisterForm = () => {
     const { UserRegister, loading } = useContext(UserContext);
-    const [showPassword, setShowPassword] = useState(false);
+    const [showPassword, setShowPassword] = useState(true);
+    const [showConfirmPass, setShowConfirmPass] = useState(true);
 
     const {
         register,
@@ -49,7 +50,7 @@ export const RegisterForm = () => {
     });
 
     const onSubmit: SubmitHandler<TRegisterFormData> = async (data) => {
-        delete data.urlImage;
+        delete data.confirmPassword;
 
         await UserRegister(data);
     };
@@ -58,7 +59,7 @@ export const RegisterForm = () => {
         <form onSubmit={handleSubmit(onSubmit)}>
             <div className='form_box--title'>
                 <h2>Cadastre a sua conta</h2>
-                <p> e tenha acesso alista completa de filmes </p>
+                <p> e tenha acesso a lista completa de filmes </p>
             </div>
             <div className='form_box--inputs'>
                 <Input
@@ -102,7 +103,7 @@ export const RegisterForm = () => {
                 <Input
                     label='Confirmar senha'
                     id='confirmPassword'
-                    type={showPassword ? 'password' : 'text'}
+                    type={showConfirmPass ? 'password' : 'text'}
                     placeholder='confirme sua senha'
                     error={errors.confirmPassword}
                     register={register('confirmPassword')}
@@ -114,9 +115,13 @@ export const RegisterForm = () => {
                             : 'esconder confirmar senha'
                     }
                     className='lock_img--confirmPassword'
-                    onClick={() => setShowPassword(!showPassword)}
+                    onClick={() => setShowConfirmPass(!showConfirmPass)}
                 >
-                    {showPassword ? <BsFillLockFill /> : <BsFillUnlockFill />}
+                    {showConfirmPass ? (
+                        <BsFillLockFill />
+                    ) : (
+                        <BsFillUnlockFill />
+                    )}
                 </span>
                 <Input
                     label='Url da imagem de perfil'
