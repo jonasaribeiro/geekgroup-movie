@@ -13,7 +13,7 @@ export const PrincipalMovie = () => {
         <ContainerMovie>
          <Carousel>
             {carouselImage.map((element: any) =>
-            <Carousel.Item> <MovieImg src={`https://image.tmdb.org/t/p/original/${element.poster_path}`} alt="" /> </Carousel.Item>
+            <Carousel.Item> <MovieImg src={`https://image.tmdb.org/t/p/original/${element.backdrop_path}`} alt="" /> </Carousel.Item>
             )}
           
          </Carousel>
