@@ -11,8 +11,9 @@ export const StyledCommentListCard = styled.li`
         display: flex;
         align-items: center;
         gap: 20px;
-
+        z-index: 0;
         img {
+            
             width: 40px;
             height: 40px;
             background-color: green;
