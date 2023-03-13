@@ -6,7 +6,7 @@ export const DivCointainerModal = styled.div`
     flex-direction: column;
     -webkit-box-align: center;
     align-items: center;
-    height: 384px;
+    height: 336px;
     width: 300px;
     border-radius: 8px;
     box-shadow: 0px 0px 10px rgb(255 52 0);
