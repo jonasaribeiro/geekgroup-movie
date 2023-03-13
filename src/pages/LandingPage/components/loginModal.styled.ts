@@ -25,13 +25,9 @@ export const HeaderModal = styled.header`
     align-items: center;
     justify-content: center;
     color: white;
-
-    h3 {
-
     h3 {
         font-size: 15px;
     }
-`;
 `;
 
 export const FormModal = styled.form`
@@ -41,14 +37,9 @@ export const FormModal = styled.form`
     align-items: center;
     gap: 9px;
     margin-top: 13px;
-
-    p {
-
     p {
         color: white;
     }
-    span {
-        color: #be6b00;
     span {
         color: #be6b00;
     }
