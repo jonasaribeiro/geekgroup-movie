@@ -10,7 +10,6 @@ const Router = () => (
     <Routes>
         <Route path='/' />
         <Route path='*' element={<NotFoundPage />} />
-
         <Route path='/' element={<ProtectedPages />}>
             <Route path='/movieinfo/:id' element={<MoviePage />} />
             <Route path='/profile' element={<ProfilePage />} />
