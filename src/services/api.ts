@@ -8,7 +8,11 @@ export const jsonApi = axios.create({
 });
 
 export const movieApi = axios.create({
+<<<<<<< HEAD
+    baseURL: 'https://api.themoviedb.org/',
+=======
     baseURL: 'https://api.themoviedb.org/3',
+>>>>>>> 444c139ee91b8482c8bf00d3cf6ca7bcebba0a4f
     timeout: 6000,
 });
 
