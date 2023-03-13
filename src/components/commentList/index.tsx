@@ -24,13 +24,13 @@ interface icomments {
 export const CommentList = () => {
     const { id } = useParams();
     const [comments, setComments] = useState<icomments[]>([]);
-    const { user } = useContext(UserContext);
+
     useEffect(() => {
         async function getComments() {
             try {
                 const request = await jsonApi.get(`/comments?movieID=${id}`, {
                     headers: {
-                        Authorization: `Bearer ${user.accessToken}`,
+                        Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRlc3RlM0B0ZXN0ZS5jb20iLCJpYXQiOjE2Nzg2NzM3NjQsImV4cCI6MTY3ODY3NzM2NCwic3ViIjoiMyJ9.70-cvd9eSs0Eh8OqplchPMMS3Vf1jcfHICdRojEgsLQ`,
                     },
                 });
                 setComments(request.data);
@@ -45,6 +45,7 @@ export const CommentList = () => {
         <StyledCommentList>
             {comments.map((commentItem) => (
                 <CommentListCard
+                    commentId={commentItem.id}
                     key={commentItem.id}
                     name={commentItem.user.name}
                     img={commentItem.user.img}
