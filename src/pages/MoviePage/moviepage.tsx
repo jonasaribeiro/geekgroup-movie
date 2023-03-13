@@ -4,13 +4,8 @@ import { MovieDescription } from '../../components/movieDescription';
 import { StyledMoviePage } from './StyledMoviePage';
 import { Link, useParams } from 'react-router-dom';
 import { CommentForm } from '../../components/postCommentForm';
-<<<<<<< HEAD
-
-=======
 import { useContext } from 'react';
 import { UserContext } from '../../provider/UserContext';
-export {};
->>>>>>> 2d027f0a6f1fda11f0824c6505179d53dd9fac08
 
 export const MoviePage = () => {
     const { id } = useParams();
