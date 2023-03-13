@@ -1,30 +1,36 @@
 import styled from 'styled-components';
 
 export const DivCointainerModal = styled.div`
-    background-color: rgb(128, 128, 128);
+    background-color: rgb(0, 0, 0);
     display: flex;
     flex-direction: column;
     -webkit-box-align: center;
     align-items: center;
     height: 384px;
     width: 300px;
-    position: relative;
-    left: 870px;
-
-`
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px rgb(255 52 0);
+    position: fixed;
+    top: 143px;
+    right: 5px;
+    z-index: 9;
+`;
 
 export const HeaderModal = styled.header`
     background-image: linear-gradient(rgb(190 107 0), rgb(255 52 0));
     width: 100%;
     height: 15%;
-    text-align: center;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     color: white;
     
-    h3{
+
+    h3 {
         font-size: 15px;
     }
-
-`
+`;
 
 export const FormModal = styled.form`
     display: flex;
@@ -33,12 +39,12 @@ export const FormModal = styled.form`
     align-items: center;
     gap: 9px;
     margin-top: 13px;
-    
-    p{
+
+    p {
         color: white;
     }
-    span{
-        color: #BE6B00;
+    span {
+        color: #be6b00;
     }
 
     Input {
@@ -49,11 +55,11 @@ export const FormModal = styled.form`
         border-color: white;
     }
 
-    button{
+    button {
         width: 200px;
         height: 37px;
         border-radius: 30px;
-        background-color: #BE6B00;
+        background-color: #be6b00;
         color: white;
     }
-`
+`;

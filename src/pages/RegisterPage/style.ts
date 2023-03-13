@@ -105,7 +105,7 @@ export const StyledRegisterPage = styled.div`
             }
             .mail_img {
                 position: absolute;
-                top: 120px;
+                top: 123px;
                 left: 253px;
 
                 @media (min-width: 600px) {
@@ -116,7 +116,7 @@ export const StyledRegisterPage = styled.div`
             .lock_img--password {
                 position: absolute;
                 left: 253px;
-                top: 196px;
+                top: 204px;
 
                 cursor: pointer;
 
@@ -127,7 +127,7 @@ export const StyledRegisterPage = styled.div`
 
             .lock_img--confirmPassword {
                 position: absolute;
-                top: 271px;
+                top: 285px;
                 left: 253px;
 
                 cursor: pointer;
@@ -139,7 +139,7 @@ export const StyledRegisterPage = styled.div`
             .link_img--urlImg {
                 position: absolute;
                 left: 253px;
-                top: 348px;
+                top: 366px;
 
                 @media (min-width: 600px) {
                     left: 543px;
@@ -186,14 +186,17 @@ export const StyledLink = styled(Link)`
     align-items: center;
 
     font: 14px 'Inter', sans-serif;
+    text-decoration: none;
     transition: 0.4s;
 
     :hover {
         background-color: #64656b;
         transition: 0.4s;
+        color: #f8f9fa;
     }
 
     p {
         margin-left: 12px;
+        margin: 0 auto;
     }
 `;

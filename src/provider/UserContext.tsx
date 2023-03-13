@@ -76,7 +76,7 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
             await jsonApi.post('/register', data);
             toast.success('Parabéns, cadastro realizado!');
             console.log(data);
-            // navigate('/');
+            navigate('/');
         } catch (error) {
             if (axios.isAxiosError(error)) {
                 console.error(error);
@@ -93,7 +93,7 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
             const response = await jsonApi.post('/login', data);
             setUser(response.data.user);
             localStorage.setItem('@TOKEN', response.data.accessToken);
-            // navigate('/profile')
+            navigate('/profile')
             toast.success('login realizado com sucesso!');
             console.log(data);
         } catch (error) {
@@ -101,7 +101,7 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
                 toast.error('Verifique os dados digitados.');
             }
         } finally {
-            setLoading(true);
+            setLoading(false);
         }
     };
 
