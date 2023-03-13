@@ -14,12 +14,14 @@ import { UserContext } from '../../provider/UserContext';
 export const ProfilePage = () => {
     const { savedMovies, setSavedMovies } = useContext(UserContext);
 
+    console.log('Teste');
+
     return (
         <>
             <Container1>
                 <Main>
                     <ProfileInfo />
-                    <MovielistTitle>Filmes Salvos: 15</MovielistTitle>
+                    <MovielistTitle>{`Filmes Salvos: ${savedMovies.length}`}</MovielistTitle>
                     <MovieList>
                         {savedMovies.length > 0 ? (
                             savedMovies.map((e) => {

@@ -23,7 +23,7 @@ interface icomments {
 
 export const CommentList = () => {
     const { id } = useParams();
-    const {user}=useContext(UserContext)
+    const { user } = useContext(UserContext);
     const [comments, setComments] = useState<icomments[]>([]);
 
     useEffect(() => {

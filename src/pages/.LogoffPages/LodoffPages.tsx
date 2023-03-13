@@ -10,6 +10,6 @@ export const LogoffPages = () => {
             navigate('/');
         }
     }, [user]);
-
+    console.log(user);
     return user.accessToken ? null : <Outlet />;
 };

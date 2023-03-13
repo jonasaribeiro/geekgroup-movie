@@ -10,7 +10,7 @@ export const AcessButton = styled.button`
 
 export const DivContainerGeral = styled.div`
     background-color: #373737;
-`
+`;
 
 export const MainCointainer = styled.div`
     padding-top: 200px;
@@ -40,19 +40,18 @@ export const DivImg = styled.div`
     width: 100%;
     height: 100%;
     background-size: contain;
-
-`
+`;
 
 export const TitleImg = styled.h1`
     margin-top: 200px;
     margin-bottom: 70px;
     font-size: 45px;
-`
+`;
 export const SubTitleImg = styled.p`
     line-height: 100px;
     font-size: 30px;
     font-weight: 600;
-`
+`;
 export const ButtonRegister = styled.button`
     width: 200px;
     height: 70px;
@@ -61,4 +60,4 @@ export const ButtonRegister = styled.button`
     color: white;
     font-size: 21px;
     margin-bottom: 156px;
-`
+`;

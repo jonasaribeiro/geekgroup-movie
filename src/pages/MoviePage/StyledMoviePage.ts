@@ -17,7 +17,7 @@ export const StyledMoviePage = styled.div`
                     border-radius: 50%;
                     transition: 0.4s;
                 }
-                img:hover{
+                img:hover {
                     position: relative;
                     scale: 1.2;
                 }
@@ -30,7 +30,7 @@ export const StyledMoviePage = styled.div`
                 color: #ffffff;
                 font-size: 18px;
             }
-            a:hover{
+            a:hover {
                 text-decoration: underline;
             }
         }
@@ -52,7 +52,6 @@ export const StyledMoviePage = styled.div`
             );
             margin: 0 auto;
             max-width: 813px;
-           
         }
     }
 
