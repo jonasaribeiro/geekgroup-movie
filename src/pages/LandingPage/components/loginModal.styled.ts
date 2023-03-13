@@ -25,7 +25,6 @@ export const HeaderModal = styled.header`
     align-items: center;
     justify-content: center;
     color: white;
-    
 
     h3 {
         font-size: 15px;
@@ -54,6 +53,13 @@ export const FormModal = styled.form`
         height: 31px;
         border-radius: 18px;
         border-color: white;
+        outline: none;
+        transition: 0.3s;
+
+        :focus {
+            box-shadow: 0px 0px 10px rgb(255 52 0);
+            transition: 0.3s;
+        }
     }
 
     button {
