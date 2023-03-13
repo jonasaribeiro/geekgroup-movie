@@ -1,9 +1,10 @@
 import { StyledMovieDescription } from './styledMovieDescription';
 import blueHeart from '../../assets/img/blueHeart.svg';
 import { useContext, useEffect, useState } from 'react';
-import { handleSaveMovie, movieApi } from '../../services/api';
+import { handleSaveMovie, movieApi, theMovieToken } from '../../services/api';
 import { UserContext } from '../../provider/UserContext';
-import { useParams } from 'react-router-dom';
+import { TrailerModal } from '../TrailerModal';
+import { DescriptionContext } from '../../provider/DescriptionContext';
 
 interface imovieId {
     movieId: number;
@@ -17,18 +18,12 @@ interface imovieDescription {
     poster: string;
 }
 
-function minuteToHour(minutes: number) {
-    const hour = (minutes / 60).toFixed(0);
-    const minute = minutes % 60;
-    return `${hour}h ${minute}m`;
-}
-function returnImg(image: string) {
-    return `https://image.tmdb.org/3/t/p/w500${image}`;
-}
-
 export const MovieDescription = ({ movieId }: imovieId) => {
+    
+    const { minuteToHour, returnImg} = useContext(DescriptionContext);
     const { user } = useContext(UserContext);
-
+    const [trailerLink, setTrailerLink] = useState<string | null>('');
+    const [showTrailerModal, setShowTrailerModal] = useState(false);
     const [movieDescription, setMovieDescription] = useState<imovieDescription>(
         {} as imovieDescription
     );
@@ -40,7 +35,7 @@ export const MovieDescription = ({ movieId }: imovieId) => {
                     `movie/${movieId}?language=pt-br`,
                     {
                         headers: {
-                            Authorization: `Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJlMzYxMjYwZmZmNzAwZTUzNzk2Y2EyNDA5NDUzMTUxNyIsInN1YiI6IjY0MDI0NzA1Njk5ZmI3MDBlNmZlZjEwOSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.hQSg-PL4PTikR_nIN8Qd-2eZCRgn0QyU5u2DztwJTkY`,
+                            Authorization: `Bearer ${theMovieToken}`,
                         },
                     }
                 );
@@ -58,6 +53,28 @@ export const MovieDescription = ({ movieId }: imovieId) => {
             }
         };
         getMovieDescription();
+
+        async function getMovieTrailer() {
+            try {
+                const request = await movieApi.get(
+                    `/movie/${movieId}?append_to_response=videos`,
+                    {
+                        headers: {
+                            Authorization: `Bearer ${theMovieToken}`,
+                        },
+                    }
+                );
+                console.log(request.data);
+                if (request.data.videos.results[0].key) {
+                    setTrailerLink(request.data.videos.results[0].key);
+                } else {
+                    setTrailerLink(null);
+                }
+            } catch (error) {
+                console.log(error);
+            }
+        }
+        getMovieTrailer();
     }, []);
 
     return (
@@ -85,14 +102,25 @@ export const MovieDescription = ({ movieId }: imovieId) => {
                     <p>Duração: {minuteToHour(movieDescription.runtime)}</p>
                     <p>Ano: {movieDescription.release}</p>
                 </div>
-
-                <button>Ver Trailer</button>
+                {trailerLink && (
+                    <button
+                        onClick={() => setShowTrailerModal(!showTrailerModal)}
+                    >
+                        Ver Trailer
+                    </button>
+                )}
             </div>
 
             <div className='sinapseDiv'>
                 <h2 className='Sinapse'>Sinopse</h2>
                 <p>{movieDescription.overview}</p>
             </div>
+            {showTrailerModal && (
+                <TrailerModal
+                    trailer={trailerLink}
+                    setShowTrailerModal={setShowTrailerModal}
+                />
+            )}
         </StyledMovieDescription>
     );
 };

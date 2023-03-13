@@ -17,6 +17,7 @@ export const StyledHeader = styled.header`
         position: fixed;
         top: 0;
         left: 0;
+        z-index: 10;
         min-width: 100%;
         display: flex;
         justify-content: space-between;

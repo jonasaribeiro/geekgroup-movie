@@ -51,7 +51,7 @@ export const CommentForm = () => {
                 img: userData.user.img,
             },
             userId: userData.user.id,
-            likes: 10,
+            likes: 0,
             movieId: Number(movieId),
         };
 
