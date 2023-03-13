@@ -1,11 +1,25 @@
 import styled from 'styled-components';
 
 export const LoginButton = styled.button`
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    width: 133px;
     padding: 8px 18px;
     font-size: 16px;
     color: white;
     background-color: #414246;
     border-radius: 8px;
+    transition: 0.3s;
+
+    :hover {
+        background-color: #64656b;
+        transition: 0.3s;
+    }
+
+    p {
+        margin: 0;
+    }
 `;
 
 export const MainCointainer = styled.div`

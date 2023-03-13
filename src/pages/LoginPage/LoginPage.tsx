@@ -5,6 +5,7 @@ import { LoginModal } from '../LandingPage/components/LoginModal';
 import { PrincipalMovie } from './components/PrincipalMovie/PrincipalMovie';
 import { TopMovies } from './components/TopMovies/TopMovies';
 import { UlMovies } from './components/TopMovies/topmovies.styled';
+import { CgLogIn } from 'react-icons/cg';
 import {
     DivContainer,
     LoginButton,
@@ -19,7 +20,8 @@ export const LoginPage = () => {
         <>
             <Header>
                 <LoginButton type='button' onClick={() => closeModal()}>
-                    Login
+                    <CgLogIn />
+                    <p>Login</p>
                 </LoginButton>
             </Header>
             <MainCointainer>
