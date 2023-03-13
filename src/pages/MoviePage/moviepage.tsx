@@ -6,11 +6,10 @@ import { Link, useParams } from 'react-router-dom';
 import { CommentForm } from '../../components/postCommentForm';
 import { useContext } from 'react';
 import { UserContext } from '../../provider/UserContext';
-export {};
 
 export const MoviePage = () => {
     const { id } = useParams();
-    const{user}=useContext(UserContext)
+    const { user } = useContext(UserContext);
 
     return (
         <>

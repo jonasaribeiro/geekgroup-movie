@@ -6,7 +6,6 @@ import { useNavigate } from 'react-router-dom';
 import { TRegisterFormData } from '../components/form/RegisterForm/register';
 import { ILoginFormValues } from '../components/form/LoginForm/LoginForm';
 
-
 export interface iUser {
     accessToken: string;
     user: {
@@ -31,14 +30,13 @@ export interface IPosterMovie {
     original_language?: string;
     original_title?: string;
     overview?: string;
-    popularity?: Number
+    popularity?: Number;
     poster_path?: string;
     release_date?: string;
     title?: string;
     video?: boolean;
     vote_average?: Number;
     vote_count?: Number;
-
 }
 
 interface iUserContext {
@@ -49,11 +47,11 @@ interface iUserContext {
     setSavedMovies: React.Dispatch<React.SetStateAction<iMovie[]>>;
     UserRegister: (data: TRegisterFormData) => Promise<void>;
     loginModal: boolean;
-    setLoginModal : React.Dispatch<React.SetStateAction<boolean>>;
+    setLoginModal: React.Dispatch<React.SetStateAction<boolean>>;
     closeModal: () => void;
-    userLogin: (data: ILoginFormValues) => Promise<void>
-    moviesPoster: IPosterMovie[]
-    carouselImage: IPosterMovie[]
+    userLogin: (data: ILoginFormValues) => Promise<void>;
+    moviesPoster: IPosterMovie[];
+    carouselImage: IPosterMovie[];
 }
 
 export const UserContext = createContext({} as iUserContext);
@@ -64,22 +62,24 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
     const [loading, setLoading] = useState(false);
     const [moviesPoster, setMoviesPosters] = useState<IPosterMovie[]>([]);
     const [carouselImage, setCarouselImage] = useState<IPosterMovie[]>([]);
-    const [loginModal, setLoginModal] = useState<false | true>(false)
+    const [loginModal, setLoginModal] = useState<false | true>(false);
 
     const navigate = useNavigate();
 
     const closeModal = () => {
-        setLoginModal(!loginModal)
-    }
+        setLoginModal(!loginModal);
+    };
 
     const UserRegister = async (data: TRegisterFormData): Promise<void> => {
         try {
             setLoading(true);
             await jsonApi.post('/register', data);
             toast.success('Parabéns, cadastro realizado!');
+            console.log(data);
             // navigate('/');
         } catch (error) {
             if (axios.isAxiosError(error)) {
+                console.error(error);
                 toast.error('Ops, algo deu errado!');
             }
         } finally {
@@ -92,18 +92,18 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
             setLoading(true);
             const response = await jsonApi.post('/login', data);
             setUser(response.data.user);
-            localStorage.setItem('@TOKEN', response.data.accessToken)
+            localStorage.setItem('@TOKEN', response.data.accessToken);
             // navigate('/profile')
-            toast.success('login realizado com sucesso!')
-            console.log(data)
-        } catch(error) {
+            toast.success('login realizado com sucesso!');
+            console.log(data);
+        } catch (error) {
             if (axios.isAxiosError(error)) {
-                toast.error('Verifique os dados digitados.')
+                toast.error('Verifique os dados digitados.');
             }
         } finally {
-            setLoading(true)
+            setLoading(true);
         }
-    }
+    };
 
     useEffect(() => {
         const getUser = () => {};
@@ -129,36 +129,32 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
     }, [user]);
 
     useEffect(() => {
-
         const loadingPoster = async () => {
-            try{
-                const response = await movieApi.get('3/movie/top_rated?api_key=e00895bb778a01db49aec7a6456aea75&language=en-US&page=1')
-                setMoviesPosters(response.data.results)
-
-            }catch(error) {
-                console.log(error)
+            try {
+                const response = await movieApi.get(
+                    '3/movie/top_rated?api_key=e00895bb778a01db49aec7a6456aea75&language=en-US&page=1'
+                );
+                setMoviesPosters(response.data.results);
+            } catch (error) {
+                console.log(error);
             }
-        }
-        loadingPoster()
-
-    }, [])
+        };
+        loadingPoster();
+    }, []);
 
     useEffect(() => {
         const loadingImageCarousel = async () => {
-            try{
-                const response = await movieApi.get('/3/trending/all/day?api_key=e00895bb778a01db49aec7a6456aea75')
-                setCarouselImage(response.data.results)
-
-
-            }catch(error){
-            console.log(error)}
-            
-
-        }
-        loadingImageCarousel()
-    }, [])
-
-    
+            try {
+                const response = await movieApi.get(
+                    '/3/trending/all/day?api_key=e00895bb778a01db49aec7a6456aea75'
+                );
+                setCarouselImage(response.data.results);
+            } catch (error) {
+                console.log(error);
+            }
+        };
+        loadingImageCarousel();
+    }, []);
 
     return (
         <UserContext.Provider

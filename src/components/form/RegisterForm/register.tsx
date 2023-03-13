@@ -1,9 +1,12 @@
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { UserContext } from '../../../provider/UserContext';
-import { Input } from '../../Input/input';
+import { Input } from '../../input/input';
+import { BsFillLockFill, BsFillUnlockFill } from 'react-icons/bs';
+import { MdEmail, MdOutlineLink } from 'react-icons/md';
+import { FaUserAlt } from 'react-icons/fa';
 
 import { ScaleLoader } from 'react-spinners';
 
@@ -35,6 +38,9 @@ const schema = yup
 
 export const RegisterForm = () => {
     const { UserRegister, loading } = useContext(UserContext);
+    const [showPassword, setShowPassword] = useState(true);
+    const [showConfirmPass, setShowConfirmPass] = useState(true);
+
     const {
         register,
         handleSubmit,
@@ -44,7 +50,7 @@ export const RegisterForm = () => {
     });
 
     const onSubmit: SubmitHandler<TRegisterFormData> = async (data) => {
-        delete data.urlImage;
+        delete data.confirmPassword;
 
         await UserRegister(data);
     };
@@ -53,7 +59,7 @@ export const RegisterForm = () => {
         <form onSubmit={handleSubmit(onSubmit)}>
             <div className='form_box--title'>
                 <h2>Cadastre a sua conta</h2>
-                <p> e tenha acesso alista completa de filmes </p>
+                <p> e tenha acesso a lista completa de filmes </p>
             </div>
             <div className='form_box--inputs'>
                 <Input
@@ -64,6 +70,9 @@ export const RegisterForm = () => {
                     error={errors.name}
                     register={register('name')}
                 />
+                <span className='user_img--name' title='nome do usuário'>
+                    <FaUserAlt />
+                </span>
                 <Input
                     label='Email'
                     id='email'
@@ -72,22 +81,48 @@ export const RegisterForm = () => {
                     error={errors.email}
                     register={register('email')}
                 />
+                <span className='mail_img' title='email'>
+                    <MdEmail />
+                </span>
                 <Input
                     label='Senha'
                     id='password'
-                    type='password'
+                    type={showPassword ? 'password' : 'text'}
                     placeholder='Digite sua senha'
                     error={errors.password}
                     register={register('password')}
                 />
+                <span
+                    title={showPassword ? 'mostrar senha' : 'esconder senha'}
+                    className='lock_img--password'
+                    onClick={() => setShowPassword(!showPassword)}
+                >
+                    {showPassword ? <BsFillLockFill /> : <BsFillUnlockFill />}
+                </span>
+
                 <Input
                     label='Confirmar senha'
                     id='confirmPassword'
-                    type='password'
-                    placeholder='Digite seu email'
+                    type={showConfirmPass ? 'password' : 'text'}
+                    placeholder='confirme sua senha'
                     error={errors.confirmPassword}
                     register={register('confirmPassword')}
                 />
+                <span
+                    title={
+                        showPassword
+                            ? 'mostrar confirmar senha'
+                            : 'esconder confirmar senha'
+                    }
+                    className='lock_img--confirmPassword'
+                    onClick={() => setShowConfirmPass(!showConfirmPass)}
+                >
+                    {showConfirmPass ? (
+                        <BsFillLockFill />
+                    ) : (
+                        <BsFillUnlockFill />
+                    )}
+                </span>
                 <Input
                     label='Url da imagem de perfil'
                     id='urlImage'
@@ -96,6 +131,12 @@ export const RegisterForm = () => {
                     error={errors.urlImage}
                     register={register('urlImage')}
                 />
+                <span
+                    className='link_img--urlImg'
+                    title='link para foto de perfil'
+                >
+                    <MdOutlineLink />
+                </span>
             </div>
             <button type='submit' disabled={loading ? true : false}>
                 {loading ? (

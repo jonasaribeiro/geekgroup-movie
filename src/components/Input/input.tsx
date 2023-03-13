@@ -10,7 +10,6 @@ export type TInputProps = {
     error?: FieldError;
     register: UseFormRegisterReturn<string>;
 };
-
 export const Input = ({
     label,
     id,
@@ -22,7 +21,12 @@ export const Input = ({
     return (
         <StyledInput>
             <label htmlFor={id}>{label}</label>
-            <input type={type} placeholder={placeholder} {...register} />
+            <input
+                id={id}
+                type={type}
+                placeholder={placeholder}
+                {...register}
+            />
             {error && <p> {error.message} </p>}
         </StyledInput>
     );

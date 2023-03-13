@@ -1,14 +1,20 @@
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 export const StyledRegisterPage = styled.div`
     min-height: 100vh;
 
-    background-color: #000000;
+    /* background-color: rgb(0, 0, 0, 0.5); */
 
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+
+    background-image: url('src/assets/img/imagemFundo.png'),
+        url('src/assets/img/Rectangle.png');
+    background-attachment: fixed;
+    background-blend-mode: darken;
 
     figure {
         display: flex;
@@ -16,21 +22,9 @@ export const StyledRegisterPage = styled.div`
         justify-content: center;
     }
 
-    .home_btn {
-        height: 30px;
-        width: 50px;
-
-        border: none;
-        border-radius: 8px;
-
-        background-color: #414246;
-        color: #f8f9fa;
-
-        font: 14px 'Inter', sans-serif;
-    }
-
     form {
         background-image: linear-gradient(rgb(190, 107, 0), rgb(255 52 0));
+        /* background: linear-gradient(140deg, #000000c7, #00000029); */
 
         min-height: 410px;
 
@@ -41,6 +35,10 @@ export const StyledRegisterPage = styled.div`
 
         display: flex;
         flex-direction: column;
+
+        /* box-shadow: 0 0 30px #ff5722a8; */
+        box-shadow: 0 0 30px #000000c7;
+
         div {
             h2 {
                 font-family: 'Roboto', sans-serif;
@@ -58,12 +56,14 @@ export const StyledRegisterPage = styled.div`
         }
 
         .form_box--inputs {
+            position: relative;
             padding: 10px;
             display: flex;
             flex-direction: column;
             gap: 20px;
 
             div {
+                position: relative;
                 display: flex;
                 flex-direction: column;
                 gap: 10px;
@@ -80,24 +80,120 @@ export const StyledRegisterPage = styled.div`
                     padding: 5px;
                     border-radius: 4px;
 
+                    outline: none;
+
                     background-color: #343b41;
                     color: #f8f9fa;
+
+                    transition: 0.3s;
+
+                    :focus {
+                        transition: 0.3s;
+                        /* box-shadow: 0px 0px 10px #ff5722a8; */
+                        box-shadow: 0px 0px 10px #000000c7;
+                    }
+                }
+            }
+            .user_img--name {
+                position: absolute;
+                left: 253px;
+                top: 44px;
+
+                @media (min-width: 600px) {
+                    left: 543px;
+                }
+            }
+            .mail_img {
+                position: absolute;
+                top: 120px;
+                left: 253px;
+
+                @media (min-width: 600px) {
+                    left: 543px;
+                }
+            }
+
+            .lock_img--password {
+                position: absolute;
+                left: 253px;
+                top: 196px;
+
+                cursor: pointer;
+
+                @media (min-width: 600px) {
+                    left: 543px;
+                }
+            }
+
+            .lock_img--confirmPassword {
+                position: absolute;
+                top: 271px;
+                left: 253px;
+
+                cursor: pointer;
+
+                @media (min-width: 600px) {
+                    left: 543px;
+                }
+            }
+            .link_img--urlImg {
+                position: absolute;
+                left: 253px;
+                top: 348px;
+
+                @media (min-width: 600px) {
+                    left: 543px;
                 }
             }
         }
-
         button {
             margin: 10px 10px;
             border: none;
             border-radius: 4px;
 
             height: 30px;
+            min-width: 80px;
 
             background-color: #343b41;
 
             color: #f8f9fa;
 
             font: 14px 'Inter', sans-serif;
+
+            transition: 0.3s;
+
+            :hover {
+                background-color: #64656b;
+                transition: 0.3s;
+            }
         }
+    }
+`;
+
+export const StyledLink = styled(Link)`
+    height: 30px;
+    width: 106px;
+
+    border: none;
+    border-radius: 8px;
+    padding: 5px;
+
+    background-color: #414246;
+    color: #f8f9fa;
+
+    display: flex;
+    padding: 5px;
+    align-items: center;
+
+    font: 14px 'Inter', sans-serif;
+    transition: 0.4s;
+
+    :hover {
+        background-color: #64656b;
+        transition: 0.4s;
+    }
+
+    p {
+        margin-left: 12px;
     }
 `;
