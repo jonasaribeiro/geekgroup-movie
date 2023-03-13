@@ -3,13 +3,7 @@ import { jsonApi, movieApi } from '../services/api';
 import { toast } from 'react-toastify';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-<<<<<<< HEAD
-import { TRegisterFormData } from '../components/Form/RegisterForm/register';
-import { ILoginFormValues } from '../components/form/LoginForm/LoginForm';
-
-=======
 import { TRegisterFormData } from '../components/form/RegisterForm/register';
->>>>>>> 444c139ee91b8482c8bf00d3cf6ca7bcebba0a4f
 
 export interface iUser {
     accessToken: string;
@@ -151,9 +145,6 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
 
     return (
         <UserContext.Provider
-<<<<<<< HEAD
-            value={{ user, setUser, loginModal, setLoginModal, closeModal, savedMovies, setSavedMovies, UserRegister, userLogin, moviesPoster }}
-=======
             value={{
                 user,
                 setUser,
@@ -162,7 +153,6 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
                 UserRegister,
                 loading,
             }}
->>>>>>> 444c139ee91b8482c8bf00d3cf6ca7bcebba0a4f
         >
             {children}
         </UserContext.Provider>
