@@ -10,8 +10,7 @@ export const DivCointainerModal = styled.div`
     width: 300px;
     position: relative;
     left: 870px;
-
-`
+`;
 
 export const HeaderModal = styled.header`
     background-image: linear-gradient(rgb(190 107 0), rgb(255 52 0));
@@ -19,12 +18,11 @@ export const HeaderModal = styled.header`
     height: 15%;
     text-align: center;
     color: white;
-    
-    h3{
+
+    h3 {
         font-size: 15px;
     }
-
-`
+`;
 
 export const FormModal = styled.form`
     display: flex;
@@ -33,12 +31,12 @@ export const FormModal = styled.form`
     align-items: center;
     gap: 9px;
     margin-top: 13px;
-    
-    p{
+
+    p {
         color: white;
     }
-    span{
-        color: #BE6B00;
+    span {
+        color: #be6b00;
     }
 
     Input {
@@ -49,11 +47,11 @@ export const FormModal = styled.form`
         border-color: white;
     }
 
-    button{
+    button {
         width: 200px;
         height: 37px;
         border-radius: 30px;
-        background-color: #BE6B00;
+        background-color: #be6b00;
         color: white;
     }
-`
+`;

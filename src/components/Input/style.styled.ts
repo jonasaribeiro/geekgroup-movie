@@ -5,9 +5,7 @@ export const StyledInput = styled.div`
         position: absolute;
         top: 57px;
 
-
         font-size: 10px;
         color: yellow;
     }
-    
 `;

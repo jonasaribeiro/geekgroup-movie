@@ -20,7 +20,7 @@ export const CommentListCard = ({
     likes,
     commentId,
 }: icommentCard) => {
-    const {user}=useContext(UserContext)
+    const { user } = useContext(UserContext);
 
     const [heartColor, setHeartColor] = useState('grey');
     function changeColor() {

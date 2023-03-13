@@ -20,4 +20,4 @@ export const LiMovies = styled.li`
 export const PosterImage = styled.img`
     width: 166px;
     height: 375px;
-`
+`;

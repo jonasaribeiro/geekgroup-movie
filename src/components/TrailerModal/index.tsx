@@ -36,7 +36,5 @@ export const TrailerModal = ({ trailer, setShowTrailerModal }: Props) => {
                 ></iframe>
             </div>
         </StyledModalWrapper>
-    ) : (
-        null
-    );
+    ) : null;
 };
