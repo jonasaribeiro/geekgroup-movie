@@ -1,8 +1,9 @@
 import { StyledCommentListCard } from './StyledCommentListCard';
 import orangeHeart from '../../../assets/img/likeHeartOrange.svg';
 import greyHeart from '../../../assets/img/likeHeartGrey.svg';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { jsonApi } from '../../../services/api';
+import { UserContext } from '../../../provider/UserContext';
 
 interface icommentCard {
     name: string;
@@ -19,6 +20,8 @@ export const CommentListCard = ({
     likes,
     commentId,
 }: icommentCard) => {
+    const {user}=useContext(UserContext)
+
     const [heartColor, setHeartColor] = useState('grey');
     function changeColor() {
         if (heartColor === 'grey') {
@@ -38,7 +41,7 @@ export const CommentListCard = ({
                 },
                 {
                     headers: {
-                        Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRlc3RlM0B0ZXN0ZS5jb20iLCJpYXQiOjE2Nzg2NzM3NjQsImV4cCI6MTY3ODY3NzM2NCwic3ViIjoiMyJ9.70-cvd9eSs0Eh8OqplchPMMS3Vf1jcfHICdRojEgsLQ`,
+                        Authorization: `Bearer ${user.accessToken}`,
                     },
                 }
             );
@@ -58,7 +61,7 @@ export const CommentListCard = ({
                     },
                     {
                         headers: {
-                            Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRlc3RlM0B0ZXN0ZS5jb20iLCJpYXQiOjE2Nzg2NzM3NjQsImV4cCI6MTY3ODY3NzM2NCwic3ViIjoiMyJ9.70-cvd9eSs0Eh8OqplchPMMS3Vf1jcfHICdRojEgsLQ`,
+                            Authorization: `Bearer ${user.accessToken}`,
                         },
                     }
                 );

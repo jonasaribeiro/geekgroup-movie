@@ -23,6 +23,7 @@ interface icomments {
 
 export const CommentList = () => {
     const { id } = useParams();
+    const {user}=useContext(UserContext)
     const [comments, setComments] = useState<icomments[]>([]);
 
     useEffect(() => {
@@ -30,7 +31,7 @@ export const CommentList = () => {
             try {
                 const request = await jsonApi.get(`/comments?movieID=${id}`, {
                     headers: {
-                        Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRlc3RlM0B0ZXN0ZS5jb20iLCJpYXQiOjE2Nzg2NzM3NjQsImV4cCI6MTY3ODY3NzM2NCwic3ViIjoiMyJ9.70-cvd9eSs0Eh8OqplchPMMS3Vf1jcfHICdRojEgsLQ`,
+                        Authorization: `Bearer ${user.accessToken}`,
                     },
                 });
                 setComments(request.data);
