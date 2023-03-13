@@ -19,8 +19,7 @@ interface imovieDescription {
 }
 
 export const MovieDescription = ({ movieId }: imovieId) => {
-    
-    const { minuteToHour, returnImg} = useContext(DescriptionContext);
+    const { minuteToHour, returnImg } = useContext(DescriptionContext);
     const { user } = useContext(UserContext);
     const [trailerLink, setTrailerLink] = useState<string | null>('');
     const [showTrailerModal, setShowTrailerModal] = useState(false);

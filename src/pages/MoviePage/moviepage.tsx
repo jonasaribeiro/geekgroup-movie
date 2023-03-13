@@ -9,7 +9,7 @@ import { UserContext } from '../../provider/UserContext';
 
 export const MoviePage = () => {
     const { id } = useParams();
-    const{user}=useContext(UserContext)
+    const { user } = useContext(UserContext);
 
     return (
         <>

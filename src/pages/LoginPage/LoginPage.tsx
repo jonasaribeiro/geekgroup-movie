@@ -11,16 +11,26 @@ import {
     MainCointainer,
     MoviesTitle,
 } from './LoginPage.styled';
+import { toast } from 'react-toastify';
+import { Link } from 'react-router-dom';
 
 export const LoginPage = () => {
-    const { loginModal, closeModal } = useContext(UserContext);
+    const { user, loginModal, closeModal } = useContext(UserContext);
+    console.log(user);
 
     return (
         <>
             <Header>
-                <LoginButton type='button' onClick={() => closeModal()}>
-                    Login
-                </LoginButton>
+                {!user.accessToken ? (
+                    <LoginButton type='button' onClick={() => closeModal()}>
+                        Login
+                    </LoginButton>
+                ) : (
+                    <>
+                        <Link to='/profile'>Profile</Link>
+                        <button>Logoff</button>
+                    </>
+                )}
             </Header>
             <MainCointainer>
                 {loginModal && <LoginModal />}
@@ -28,6 +38,8 @@ export const LoginPage = () => {
                     <PrincipalMovie />
                     <MoviesTitle>Tendencias</MoviesTitle>
                     <UlMovies>
+                        <TopMovies />
+                        <TopMovies />
                         <TopMovies />
                     </UlMovies>
                 </DivContainer>
