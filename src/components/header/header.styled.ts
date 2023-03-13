@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 export const StyledHeader = styled.header`
     display: none;
+    z-index: 1;
     figure {
         display: flex;
         align-items: center;
@@ -23,6 +24,7 @@ export const StyledHeader = styled.header`
             rgb(255 52 0)
         );
         box-shadow: 0 0 30px black;
+        z-index: 1;
     }
 `;
 

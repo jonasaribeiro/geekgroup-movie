@@ -1,9 +1,11 @@
 import { ReactNode, createContext, useEffect, useState } from 'react';
-import { jsonApi } from '../services/api';
+import { jsonApi, movieApi } from '../services/api';
 import { toast } from 'react-toastify';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { TRegisterFormData } from '../components/Form/RegisterForm/register';
+import { ILoginFormValues } from '../components/form/LoginForm/LoginForm';
+
 
 export interface iUser {
     accessToken: string;
@@ -21,12 +23,35 @@ export interface iMovie {
     id: Number;
 }
 
+export interface IPosterMovie {
+    adult?: boolean;
+    backdrop_path?: string;
+    genre_ids?: Number;
+    id?: Number;
+    original_language?: string;
+    original_title?: string;
+    overview?: string;
+    popularity?: Number
+    poster_path?: string;
+    release_date?: string;
+    title?: string;
+    video?: boolean;
+    vote_average?: Number;
+    vote_count?: Number;
+
+}
+
 interface iUserContext {
     user: iUser;
     setUser: React.Dispatch<React.SetStateAction<iUser>>;
     savedMovies: iMovie[];
     setSavedMovies: React.Dispatch<React.SetStateAction<iMovie[]>>;
     UserRegister: (data: TRegisterFormData) => Promise<void>;
+    loginModal: boolean;
+    setLoginModal : React.Dispatch<React.SetStateAction<boolean>>;
+    closeModal: () => void;
+    userLogin: (data: ILoginFormValues) => Promise<void>
+    moviesPoster: IPosterMovie[]
 }
 
 export const UserContext = createContext({} as iUserContext);
@@ -35,14 +60,22 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
     const [user, setUser] = useState({} as iUser);
     const [savedMovies, setSavedMovies] = useState({} as iMovie[]);
     const [loading, setLoading] = useState(false);
+    const [moviesPoster, setMoviesPosters] = useState<IPosterMovie[]>([]);
 
     const navigate = useNavigate();
+
+    const [loginModal, setLoginModal] = useState<false | true>(false)
+
+    const closeModal = () => {
+        setLoginModal(!loginModal)
+    }
 
     const UserRegister = async (data: TRegisterFormData): Promise<void> => {
         try {
             setLoading(true);
             await jsonApi.post('/register', data);
             toast.success('Parabéns, cadastro realizado!');
+            console.log(data)
             // navigate('/');
         } catch (error) {
             if (axios.isAxiosError(error)) {
@@ -52,6 +85,24 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
             setLoading(true);
         }
     };
+
+    const userLogin = async (data: ILoginFormValues) => {
+        try {
+            setLoading(true);
+            const response = await jsonApi.post('/login', data);
+            setUser(response.data.user);
+            localStorage.setItem('@TOKEN', response.data.accessToken)
+            // navigate('/profile')
+            toast.success('login realizado com sucesso!')
+            console.log(data)
+        } catch(error) {
+            if (axios.isAxiosError(error)) {
+                toast.error('Verifique os dados digitados.')
+            }
+        } finally {
+            setLoading(true)
+        }
+    }
 
     useEffect(() => {
         const getUser = () => {};
@@ -76,9 +127,26 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
         }
     }, [user]);
 
+    useEffect(() => {
+
+        const loadingPoster = async () => {
+            try{
+                const response = await movieApi.get('3/movie/top_rated?api_key=e00895bb778a01db49aec7a6456aea75&language=en-US&page=1')
+                setMoviesPosters(response.data.results)
+
+            }catch(error) {
+                console.log(error)
+            }
+        }
+        loadingPoster()
+
+    }, [])
+
+    
+
     return (
         <UserContext.Provider
-            value={{ user, setUser, savedMovies, setSavedMovies, UserRegister }}
+            value={{ user, setUser, loginModal, setLoginModal, closeModal, savedMovies, setSavedMovies, UserRegister, userLogin, moviesPoster }}
         >
             {children}
         </UserContext.Provider>
