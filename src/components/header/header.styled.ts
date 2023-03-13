@@ -25,7 +25,7 @@ export const StyledHeader = styled.header`
             rgb(255 52 0)
         );
         box-shadow: 0 0 30px black;
-        z-index: 1;
+        z-index: 99;
     }
 `;
 

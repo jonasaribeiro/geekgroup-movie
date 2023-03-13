@@ -15,9 +15,29 @@ export const LiMovies = styled.li`
     padding: 16px 0 20px;
     position: relative;
     align-items: center;
+
+    .blue-heart {
+        position: absolute;
+        top: 22px;
+        right: 9px;
+    }
+    button {
+        background-image: linear-gradient(
+            to right,
+            rgb(190 46 0),
+            rgb(255 52 0)
+        );
+        color: white;
+        font-size: 20px;
+        position: absolute;
+        bottom: 0;
+        margin: auto;
+        padding: 5px 10px;
+        border-radius: 10px;
+    }
 `;
 
 export const PosterImage = styled.img`
     width: 166px;
     height: 375px;
-`
+`;

@@ -93,9 +93,9 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
             const response = await jsonApi.post('/login', data);
             setUser(response.data.user);
             localStorage.setItem('@TOKEN', response.data.accessToken);
-            navigate('/profile')
+            navigate('/profile');
             toast.success('login realizado com sucesso!');
-            console.log(data);
+            console.log(response);
         } catch (error) {
             if (axios.isAxiosError(error)) {
                 toast.error('Verifique os dados digitados.');
