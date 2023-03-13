@@ -20,6 +20,14 @@ export const LiMovies = styled.li`
         position: absolute;
         top: 22px;
         right: 9px;
+        opacity: 0.4;
+        transition: 0.3s;
+        cursor: pointer;
+
+        :hover {
+            opacity: 1;
+            transition: 0.3s;
+        }
     }
     button {
         background-image: linear-gradient(
