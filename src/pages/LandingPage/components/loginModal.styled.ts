@@ -49,6 +49,7 @@ export const FormModal = styled.form`
 
     Input {
         margin-top: 20px;
+        padding: 5px 10px;
         width: 267px;
         height: 31px;
         border-radius: 18px;
