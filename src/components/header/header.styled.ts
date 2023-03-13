@@ -2,11 +2,7 @@ import styled from 'styled-components';
 
 export const StyledHeader = styled.header`
     display: none;
-<<<<<<< HEAD
     z-index: 1;
-=======
-
->>>>>>> 444c139ee91b8482c8bf00d3cf6ca7bcebba0a4f
     figure {
         display: flex;
         align-items: center;

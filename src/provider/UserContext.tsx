@@ -4,6 +4,8 @@ import { toast } from 'react-toastify';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { TRegisterFormData } from '../components/form/RegisterForm/register';
+import { ILoginFormValues } from '../components/form/LoginForm/LoginForm';
+
 
 export interface iUser {
     accessToken: string;
@@ -51,6 +53,7 @@ interface iUserContext {
     closeModal: () => void;
     userLogin: (data: ILoginFormValues) => Promise<void>
     moviesPoster: IPosterMovie[]
+    carouselImage: IPosterMovie[]
 }
 
 export const UserContext = createContext({} as iUserContext);
@@ -60,10 +63,10 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
     const [savedMovies, setSavedMovies] = useState({} as iMovie[]);
     const [loading, setLoading] = useState(false);
     const [moviesPoster, setMoviesPosters] = useState<IPosterMovie[]>([]);
+    const [carouselImage, setCarouselImage] = useState<IPosterMovie[]>([]);
+    const [loginModal, setLoginModal] = useState<false | true>(false)
 
     const navigate = useNavigate();
-
-    const [loginModal, setLoginModal] = useState<false | true>(false)
 
     const closeModal = () => {
         setLoginModal(!loginModal)
@@ -74,7 +77,6 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
             setLoading(true);
             await jsonApi.post('/register', data);
             toast.success('Parabéns, cadastro realizado!');
-            console.log(data)
             // navigate('/');
         } catch (error) {
             if (axios.isAxiosError(error)) {
@@ -141,6 +143,21 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
 
     }, [])
 
+    useEffect(() => {
+        const loadingImageCarousel = async () => {
+            try{
+                const response = await movieApi.get('/3/trending/all/day?api_key=e00895bb778a01db49aec7a6456aea75')
+                setCarouselImage(response.data.results)
+
+
+            }catch(error){
+            console.log(error)}
+            
+
+        }
+        loadingImageCarousel()
+    }, [])
+
     
 
     return (
@@ -148,9 +165,15 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
             value={{
                 user,
                 setUser,
+                loginModal,
+                setLoginModal,
+                closeModal,
                 savedMovies,
                 setSavedMovies,
                 UserRegister,
+                userLogin,
+                moviesPoster,
+                carouselImage,
                 loading,
             }}
         >

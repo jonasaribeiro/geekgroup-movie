@@ -8,11 +8,9 @@ import { DescriptionProvider } from './provider/DescriptionContext';
 function App() {
     return (
         <UserProvider>
-            <DescriptionProvider>
-                <GlobalStyles />
-                <Router />
-                <ToastContainer />
-            </DescriptionProvider>
+            <GlobalStyles />
+            <Router />
+            <ToastContainer />
         </UserProvider>
     );
 }
