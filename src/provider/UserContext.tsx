@@ -3,9 +3,13 @@ import { jsonApi, movieApi } from '../services/api';
 import { toast } from 'react-toastify';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+<<<<<<< HEAD
 import { TRegisterFormData } from '../components/Form/RegisterForm/register';
 import { ILoginFormValues } from '../components/form/LoginForm/LoginForm';
 
+=======
+import { TRegisterFormData } from '../components/form/RegisterForm/register';
+>>>>>>> 444c139ee91b8482c8bf00d3cf6ca7bcebba0a4f
 
 export interface iUser {
     accessToken: string;
@@ -43,6 +47,7 @@ export interface IPosterMovie {
 
 interface iUserContext {
     user: iUser;
+    loading: boolean;
     setUser: React.Dispatch<React.SetStateAction<iUser>>;
     savedMovies: iMovie[];
     setSavedMovies: React.Dispatch<React.SetStateAction<iMovie[]>>;
@@ -82,7 +87,7 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
                 toast.error('Ops, algo deu errado!');
             }
         } finally {
-            setLoading(true);
+            setLoading(false);
         }
     };
 
@@ -146,7 +151,18 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
 
     return (
         <UserContext.Provider
+<<<<<<< HEAD
             value={{ user, setUser, loginModal, setLoginModal, closeModal, savedMovies, setSavedMovies, UserRegister, userLogin, moviesPoster }}
+=======
+            value={{
+                user,
+                setUser,
+                savedMovies,
+                setSavedMovies,
+                UserRegister,
+                loading,
+            }}
+>>>>>>> 444c139ee91b8482c8bf00d3cf6ca7bcebba0a4f
         >
             {children}
         </UserContext.Provider>

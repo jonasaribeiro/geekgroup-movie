@@ -28,10 +28,14 @@ export const StyledMovieDescription = styled.div`
     }
     .posterDiv {
         width: 100%;
+        background-color: black;
+        display: flex;
+        justify-content: center;
+        margin-bottom: 30px;
         .poster {
-            width: 100%;
+            align-items: center;
+            width: 50%;
             object-fit: contain;
-            margin-bottom: 15px;
         }
     }
 
@@ -65,6 +69,10 @@ export const StyledMovieDescription = styled.div`
             border-radius: 70px;
             border: none;
             box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+            transition: 0.4s ease;
+        }
+        button:hover{
+            opacity: 0.8;
         }
     }
 

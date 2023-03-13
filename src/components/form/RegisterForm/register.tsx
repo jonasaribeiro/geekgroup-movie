@@ -5,13 +5,15 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { UserContext } from '../../../provider/UserContext';
 import { Input } from '../../Input/input';
 
-export type TRegisterFormData = {
+import { ScaleLoader } from 'react-spinners';
+
+export interface TRegisterFormData {
     name: string;
     email: string;
     password: string;
     confirmPassword: string | undefined;
     urlImage?: string;
-};
+}
 
 const schema = yup
     .object({
@@ -32,7 +34,7 @@ const schema = yup
     .required();
 
 export const RegisterForm = () => {
-    const { UserRegister } = useContext(UserContext);
+    const { UserRegister, loading } = useContext(UserContext);
     const {
         register,
         handleSubmit,
@@ -48,7 +50,7 @@ export const RegisterForm = () => {
     };
 
     return (
-        <form onSubmit={handleSubmit(onSubmit)} >
+        <form onSubmit={handleSubmit(onSubmit)}>
             <div className='form_box--title'>
                 <h2>Cadastre a sua conta</h2>
                 <p> e tenha acesso alista completa de filmes </p>
@@ -87,7 +89,7 @@ export const RegisterForm = () => {
                     register={register('confirmPassword')}
                 />
                 <Input
-                    label='url da imagem de perfil'
+                    label='Url da imagem de perfil'
                     id='urlImage'
                     type='text'
                     placeholder='Insira a url da imagem'
@@ -95,7 +97,17 @@ export const RegisterForm = () => {
                     register={register('urlImage')}
                 />
             </div>
-            <button type='submit'>Cadastrar</button>
+            <button type='submit' disabled={loading ? true : false}>
+                {loading ? (
+                    <ScaleLoader
+                        color={'#F8F9FA'}
+                        loading={loading}
+                        height={25}
+                    />
+                ) : (
+                    'Cadastrar'
+                )}
+            </button>
         </form>
     );
 };
