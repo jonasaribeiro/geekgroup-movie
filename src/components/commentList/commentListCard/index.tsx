@@ -1,12 +1,16 @@
 import { StyledCommentListCard } from './StyledCommentListCard';
-import greyHeart from '../../../assets/img/likeHeartOrange.svg';
-import profilImg from '../../../assets/img/profileComment.svg';
+import orangeHeart from '../../../assets/img/likeHeartOrange.svg';
+import greyHeart from '../../../assets/img/likeHeartGrey.svg';
+import { useContext, useState } from 'react';
+import { jsonApi } from '../../../services/api';
+import { UserContext } from '../../../provider/UserContext';
 
 interface icommentCard {
     name: string;
     img: string;
     comment: string;
     likes: number;
+    commentId: number;
 }
 
 export const CommentListCard = ({
@@ -14,7 +18,60 @@ export const CommentListCard = ({
     img,
     comment,
     likes,
+    commentId,
 }: icommentCard) => {
+    const {user}=useContext(UserContext)
+
+    const [heartColor, setHeartColor] = useState('grey');
+    function changeColor() {
+        if (heartColor === 'grey') {
+            setHeartColor('orange');
+        } else {
+            setHeartColor('grey');
+        }
+    }
+
+    async function addToCommentNumber(commentId: number) {
+        changeColor();
+        try {
+            const request = await jsonApi.patch(
+                `/comments/${commentId}`,
+                {
+                    likes: likes + 1,
+                },
+                {
+                    headers: {
+                        Authorization: `Bearer ${user.accessToken}`,
+                    },
+                }
+            );
+            console.log(request);
+        } catch (error) {
+            console.log(error);
+        }
+    }
+    async function decreaseToCommentNumber(commentId: number) {
+        if (likes >= 1) {
+            changeColor();
+            try {
+                const request = await jsonApi.patch(
+                    `/comments/${commentId}`,
+                    {
+                        likes: likes - 1,
+                    },
+                    {
+                        headers: {
+                            Authorization: `Bearer ${user.accessToken}`,
+                        },
+                    }
+                );
+                console.log(request);
+            } catch (error) {
+                console.log(error);
+            }
+        }
+    }
+
     return (
         <StyledCommentListCard>
             <div className='top_comment'>
@@ -22,8 +79,19 @@ export const CommentListCard = ({
                 <h2>{name}</h2>
                 <div className='likeButton'>
                     <p>{likes}</p>
-                    <button>
-                        <img src={greyHeart} alt='heartImg' />
+                    <button
+                        onClick={() =>
+                            heartColor === 'grey'
+                                ? addToCommentNumber(commentId)
+                                : decreaseToCommentNumber(commentId)
+                        }
+                    >
+                        <img
+                            src={
+                                heartColor === 'grey' ? greyHeart : orangeHeart
+                            }
+                            alt='heartImg'
+                        />
                     </button>
                 </div>
             </div>

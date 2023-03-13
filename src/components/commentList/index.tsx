@@ -23,8 +23,9 @@ interface icomments {
 
 export const CommentList = () => {
     const { id } = useParams();
+    const {user}=useContext(UserContext)
     const [comments, setComments] = useState<icomments[]>([]);
-    const { user } = useContext(UserContext);
+
     useEffect(() => {
         async function getComments() {
             try {
@@ -45,6 +46,7 @@ export const CommentList = () => {
         <StyledCommentList>
             {comments.map((commentItem) => (
                 <CommentListCard
+                    commentId={commentItem.id}
                     key={commentItem.id}
                     name={commentItem.user.name}
                     img={commentItem.user.img}
