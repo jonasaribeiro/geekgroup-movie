@@ -4,7 +4,7 @@ import { SubmitHandler, useForm } from 'react-hook-form';
 import * as yup from 'yup';
 import { FormModal } from '../../../pages/LandingPage/components/loginModal.styled';
 import { UserContext } from '../../../provider/UserContext';
-import { Input } from '../../Input/input';
+import { Input } from '../../input/input';
 import { ScaleLoader } from 'react-spinners';
 import { Link } from 'react-router-dom';
 

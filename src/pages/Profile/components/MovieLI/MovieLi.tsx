@@ -12,7 +12,7 @@ export const MovieLI = ({ movieInfo }: { movieInfo: iMovie }) => {
         handleRemoveSavedMovie(movieInfo, user);
     };
     const handleClickMore = () => {
-        navigate(`/`);
+        navigate(`/movieinfo/${movieInfo.movieId}`);
     };
 
     return (
