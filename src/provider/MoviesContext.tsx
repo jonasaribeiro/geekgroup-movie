@@ -30,7 +30,7 @@ export interface IPosterMovie {
 export interface iMovie {
     movieId: Number;
     userId: Number;
-    id: Number;
+    id?: Number;
 }
 
 interface iMoviesContext {

@@ -26,7 +26,9 @@ export const ProfilePage = () => {
                     <MovielistTitle>{`Filmes Salvos: ${savedMovies.length}`}</MovielistTitle>
                     <MovieList>
                         {savedMovies.length > 0 ? (
-                            savedMovies.map((e) => <MovieLI movieInfo={e} />)
+                            savedMovies.map((e) => (
+                                <MovieLI movieInfo={e} key={e.movieId} />
+                            ))
                         ) : (
                             <h3>
                                 Você não possui nenhum filme salvo em sua lista

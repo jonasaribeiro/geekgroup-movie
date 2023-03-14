@@ -13,7 +13,8 @@ import { MoviesContext } from '../../../../provider/MoviesContext';
 export const MovieLI = ({ movieInfo }: { movieInfo: iMovie }) => {
     const navigate = useNavigate();
     const { user } = useContext(UserContext);
-    const { saibaMaisClick } = useContext(MoviesContext);
+    const { saibaMaisClick, savedMovies, setSavedMovies } =
+        useContext(MoviesContext);
     const [poster, setPoster] = useState('');
 
     useEffect(() => {
@@ -33,6 +34,10 @@ export const MovieLI = ({ movieInfo }: { movieInfo: iMovie }) => {
 
     const handleClickRemove = () => {
         handleRemoveSavedMovie(movieInfo, user);
+        const newSavedMovies = savedMovies.filter(
+            (e) => e.movieId !== movieInfo.movieId
+        );
+        setSavedMovies(newSavedMovies);
     };
     const handleClickMore = () => {
         saibaMaisClick(movieInfo.movieId);
