@@ -2,11 +2,14 @@ import styled from 'styled-components';
 
 export const UlMovies = styled.ul`
     display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
+    flex-flow: row wrap;
+    justify-content: space-between;
     z-index: 0;
-    width: 709px;
+    width: 96%;
+    -webkit-box-align: center;
+    align-items: center;
+    flex-wrap: wrap;
+    flex-direction: row;
 `;
 
 export const LiMovies = styled.li`
@@ -46,6 +49,6 @@ export const LiMovies = styled.li`
 `;
 
 export const PosterImage = styled.img`
-    width: 166px;
-    height: 375px;
+    width: 100%;
+    height: 430px;
 `;

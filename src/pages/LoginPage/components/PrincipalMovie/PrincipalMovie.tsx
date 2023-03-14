@@ -11,12 +11,11 @@ export const PrincipalMovie = () => {
         <ContainerMovie>
             <Carousel>
                 {carouselImage.map((element: any) => (
-                    <Carousel.Item>
-                        {' '}
+                    <Carousel.Item id={element.id}>
                         <MovieImg
                             src={`https://image.tmdb.org/t/p/original/${element.backdrop_path}`}
                             alt=''
-                        />{' '}
+                        />
                     </Carousel.Item>
                 ))}
             </Carousel>

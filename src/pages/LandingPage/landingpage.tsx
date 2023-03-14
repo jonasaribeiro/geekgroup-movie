@@ -1,27 +1,26 @@
-import { redirect } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { Header } from '../../components/header/header';
 import {
     AcessButton,
     ButtonRegister,
     DivContainer,
-    DivImg,
     MainCointainer,
     SubTitleImg,
     TitleImg,
 } from './landingpage.styled';
+import logo from '../../assets/img/logo.svg'
 
 export const LandingPage = () => {
     return (
         <>
-            <Header>
-                <AcessButton type='button' onClick={() => redirect('/login')}>
-                    Acessar
-                </AcessButton>
+         <MainCointainer>
+         <Header>
+                <AcessButton type='button'><Link to='/'>Acessar</Link></AcessButton>
             </Header>
-            <div>
-                <MainCointainer>
+            <figure>
+                <img src={logo} alt="" />
+            </figure>
                     <DivContainer>
-                        <DivImg>
                             <TitleImg>
                                 As melhores histórias em um só lugar.
                             </TitleImg>
@@ -29,11 +28,9 @@ export const LandingPage = () => {
                             <SubTitleImg>
                                 Não sabe o que assistir? Cadastre-se aqui!
                             </SubTitleImg>
-                            <ButtonRegister>Vamos lá?</ButtonRegister>
-                        </DivImg>
+                            <ButtonRegister><Link to='/register'>Vamos lá!</Link></ButtonRegister>
                     </DivContainer>
-                </MainCointainer>
-            </div>
+        </MainCointainer>
         </>
     );
 };

@@ -6,6 +6,11 @@ export const AcessButton = styled.button`
     color: white;
     background-color: #414246;
     border-radius: 8px;
+
+    a{
+        color: white;
+        text-decoration: none;
+    }
 `;
 
 export const DivContainerGeral = styled.div`
@@ -13,7 +18,7 @@ export const DivContainerGeral = styled.div`
 `;
 
 export const MainCointainer = styled.div`
-    padding-top: 200px;
+    padding-top: 20px;
     width: 100vw;
     min-height: 100vh;
     background-color: black;
@@ -21,6 +26,10 @@ export const MainCointainer = styled.div`
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    background-image: url(https://uploaddeimagens.com.br/images/004/380/983/original/image_32.jpg?1678236654);
+    width: 100%;
+    height: 100%;
+    background-size: contain;
 `;
 
 export const DivContainer = styled.main`
@@ -35,22 +44,17 @@ export const DivContainer = styled.main`
     min-height: 80vh;
 `;
 
-export const DivImg = styled.div`
-    background-image: url(https://uploaddeimagens.com.br/images/004/380/983/original/image_32.jpg?1678236654);
-    width: 100%;
-    height: 100%;
-    background-size: contain;
-`;
-
 export const TitleImg = styled.h1`
     margin-top: 200px;
     margin-bottom: 70px;
     font-size: 45px;
+    color: white;
 `;
 export const SubTitleImg = styled.p`
     line-height: 100px;
     font-size: 30px;
     font-weight: 600;
+    color: white
 `;
 export const ButtonRegister = styled.button`
     width: 200px;
@@ -60,4 +64,9 @@ export const ButtonRegister = styled.button`
     color: white;
     font-size: 21px;
     margin-bottom: 156px;
+
+    a{
+        color: white;
+        text-decoration: none;
+    }
 `;
