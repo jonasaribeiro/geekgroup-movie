@@ -12,11 +12,12 @@ import { useContext } from 'react';
 import { UserContext } from '../../provider/UserContext';
 import { Container3 } from './profile.styled';
 import { Link } from 'react-router-dom';
+import { MoviesContext } from '../../provider/MoviesContext';
 
 export const ProfilePage = () => {
-    const { savedMovies, setSavedMovies, handleLogOff } =
-        useContext(UserContext);
-    console.log(savedMovies);
+    const { handleLogOff } = useContext(UserContext);
+    const { savedMovies, setSavedMovies } = useContext(MoviesContext);
+
     return (
         <>
             <Container1>
