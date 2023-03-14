@@ -21,6 +21,7 @@ export const StyledCommentListCard = styled.li`
         h2 {
             color: #ffffff;
             font-size: 18px;
+            font-family: 'Roboto', sans-serif;
         }
         .likeButton {
             position: absolute;
@@ -30,11 +31,13 @@ export const StyledCommentListCard = styled.li`
             align-items: center;
             cursor: pointer;
             p {
+                font-family: 'Inter', sans-serif;
                 color: #ffffff;
                 font-size: 20px;
                 text-align: center;
             }
             button {
+                font-family: 'Inter', sans-serif;
                 background-color: transparent;
                 img {
                     background-color: transparent;
@@ -56,6 +59,7 @@ export const StyledCommentListCard = styled.li`
         gap: 15px;
         padding-right: 40px;
         p {
+            font-family: 'Inter', sans-serif;
             width: 100%;
             height: max-content;
             text-align: justify;

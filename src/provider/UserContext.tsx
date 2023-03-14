@@ -55,7 +55,7 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
             setLoading(true);
             await jsonApi.post('/register', data);
             toast.success('Parabéns, cadastro realizado!');
-            navigate('/');
+            navigate('/login')
         } catch (error) {
             if (axios.isAxiosError(error)) {
                 console.error(error);
