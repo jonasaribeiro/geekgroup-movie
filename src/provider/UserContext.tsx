@@ -53,6 +53,7 @@ interface iUserContext {
     moviesPoster: IPosterMovie[];
     carouselImage: IPosterMovie[];
     handleLogOff: () => void;
+    saibaMaisClick:(movieId:number)=>void;
 }
 
 export const UserContext = createContext({} as iUserContext);
@@ -64,9 +65,7 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
     const [moviesPoster, setMoviesPosters] = useState<IPosterMovie[]>([]);
     const [carouselImage, setCarouselImage] = useState<IPosterMovie[]>([]);
     const [loginModal, setLoginModal] = useState<false | true>(false);
-
     const navigate = useNavigate();
-
     const closeModal = () => {
         setLoginModal(!loginModal);
     };
@@ -80,6 +79,15 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
         navigate('/');
         toast.success('Deslogado com sucesso!');
     };
+
+    function saibaMaisClick(movieId:number){
+        if(user.accessToken!==''){
+            navigate(`/movieinfo/${movieId}`)
+        }
+        else{
+            navigate(`/landingPage`)
+        }
+    }
 
     const UserRegister = async (data: TRegisterFormData): Promise<void> => {
         try {
@@ -184,6 +192,7 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
                 moviesPoster,
                 carouselImage,
                 loading,
+                saibaMaisClick
             }}
         >
             {children}

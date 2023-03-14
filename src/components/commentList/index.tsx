@@ -29,7 +29,7 @@ export const CommentList = () => {
     useEffect(() => {
         async function getComments() {
             try {
-                const request = await jsonApi.get(`/comments?movieID=${id}`, {
+                const request = await jsonApi.get(`/comments?movieId=${id}`, {
                     headers: {
                         Authorization: `Bearer ${user.accessToken}`,
                     },

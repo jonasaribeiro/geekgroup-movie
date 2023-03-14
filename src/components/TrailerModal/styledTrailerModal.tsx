@@ -11,29 +11,32 @@ export const StyledModalWrapper = styled.div`
     align-items: center;
     justify-content: center;
     background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
     .modal {
         width: 700px;
         height: 400px;
         position: relative;
         animation: modalAnimation 0.4s ease-in-out;
-    }
+        background-color: red;
 
-    button {
-        position: absolute;
-        top: 0;
-        right: 0;
-        font-size: 30px;
-        color: orange;
-        background-color: black;
-        cursor: pointer;
-    }
-    iframe {
-        width: 100%;
-        height: 100%;
-        max-width: 100%;
-        border-radius: 20px;
-        background-color: #ffe6cc;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15), 0 0 4px rgba(0, 0, 0, 0.1);
+        button {
+            position: absolute;
+            top: 0;
+            right: 0;
+            font-size: 30px;
+            color: orange;
+            background-color: black;
+            cursor: pointer;
+        }
+        iframe {
+            width: 100%;
+            height: 100%;
+            max-width: 100%;
+            border-radius: 20px;
+            background-color: #ffe6cc;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15),
+                0 0 4px rgba(0, 0, 0, 0.1);
+        }
     }
 
     @keyframes modalAnimation {

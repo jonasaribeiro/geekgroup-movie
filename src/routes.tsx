@@ -13,10 +13,13 @@ const Router = () => (
         <Route path='/' element={<LoginPage />} />
         <Route path='/info' element={<LandingPage />} />
         <Route path='*' element={<NotFoundPage />} />
+        <Route path='/login' element={<LoginPage />} />
+
         <Route path='/' element={<ProtectedPages />}>
             <Route path='/movieinfo/:id' element={<MoviePage />} />
             <Route path='/profile' element={<ProfilePage />} />
         </Route>
+        <Route path='/landingpage' element={<LandingPage />} />
         <Route path='/' element={<LogoffPages />}>
             <Route path='/register' element={<RegisterPage />} />
         </Route>
