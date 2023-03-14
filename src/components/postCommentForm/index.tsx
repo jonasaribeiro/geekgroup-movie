@@ -70,7 +70,7 @@ export const CommentForm = () => {
 
     const onSubmit: SubmitHandler<ipostComment> = (data) => {
         postComment(data, user, id);
-        reset()
+        reset();
     };
 
     return (

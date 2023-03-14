@@ -1,11 +1,11 @@
 import { StyledMovieDescription } from './styledMovieDescription';
 import blueHeart from '../../assets/img/blueHeart.svg';
 import { useContext, useEffect, useState } from 'react';
-import { handleSaveMovie, movieApi, theMovieToken } from '../../services/api';
 import { UserContext } from '../../provider/UserContext';
 import { TrailerModal } from '../TrailerModal';
 import { DescriptionContext } from '../../provider/DescriptionContext';
 import { MoviesContext } from '../../provider/MoviesContext';
+import { movieApi, theMovieToken } from '../../services/api';
 
 interface imovieId {
     movieId: number;
@@ -22,7 +22,8 @@ interface imovieDescription {
 export const MovieDescription = ({ movieId }: imovieId) => {
     const { minuteToHour, returnImg } = useContext(DescriptionContext);
     const { user } = useContext(UserContext);
-    const { savedMovies, setSavedMovies } = useContext(MoviesContext);
+    const { savedMovies, setSavedMovies, handleSaveMovie } =
+        useContext(MoviesContext);
     const [trailerLink, setTrailerLink] = useState<string | null>('');
     const [showTrailerModal, setShowTrailerModal] = useState(false);
     const [movieDescription, setMovieDescription] = useState<imovieDescription>(
@@ -87,10 +88,6 @@ export const MovieDescription = ({ movieId }: imovieId) => {
                 <div
                     onClick={() => {
                         handleSaveMovie(movieId, user);
-                        setSavedMovies([
-                            ...savedMovies,
-                            { movieId: movieId, userId: user.user.id },
-                        ]);
                     }}
                     className='saveButton'
                 >

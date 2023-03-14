@@ -1,5 +1,5 @@
 import { Button1, Button2, ImgPoster, StyledLi } from './MovieLi.styled';
-import { handleRemoveSavedMovie, movieApi } from '../../../../services/api';
+import { movieApi } from '../../../../services/api';
 import { UserContext } from '../../../../provider/UserContext';
 import { iMovie } from '../../../../provider/MoviesContext';
 import { useContext, useState, useEffect } from 'react';
@@ -8,8 +8,12 @@ import { MoviesContext } from '../../../../provider/MoviesContext';
 
 export const MovieLI = ({ movieInfo }: { movieInfo: iMovie }) => {
     const { user } = useContext(UserContext);
-    const { saibaMaisClick, savedMovies, setSavedMovies } =
-        useContext(MoviesContext);
+    const {
+        saibaMaisClick,
+        savedMovies,
+        setSavedMovies,
+        handleRemoveSavedMovie,
+    } = useContext(MoviesContext);
     const [poster, setPoster] = useState('');
 
     useEffect(() => {

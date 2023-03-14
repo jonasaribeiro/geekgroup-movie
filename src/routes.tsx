@@ -10,8 +10,8 @@ import { LoginPage } from './pages/LoginPage/LoginPage';
 
 const Router = () => (
     <Routes>
-        <Route path='/' element={<LoginPage />} />
         <Route path='/info' element={<LandingPage />} />
+        <Route path='/' element={<LoginPage />} />
         <Route path='*' element={<NotFoundPage />} />
         <Route path='/login' element={<LoginPage />} />
 

@@ -73,6 +73,7 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
             setUser(response.data);
             localStorage.setItem('@GeekGroup', JSON.stringify(response.data));
             toast.success('login realizado com sucesso!');
+            navigate('/profile')
         } catch (error) {
             if (axios.isAxiosError(error)) {
                 toast.error('Verifique os dados digitados.');
