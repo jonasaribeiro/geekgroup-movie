@@ -1,6 +1,7 @@
 import { ReactNode } from 'react';
 import logo from '../../assets/img/logo.svg';
 import { Img, StyledHeader } from './header.styled';
+import { Link } from 'react-router-dom';
 
 interface TChildrenProps {
     children: ReactNode;
@@ -9,9 +10,11 @@ interface TChildrenProps {
 export const Header = ({ children }: TChildrenProps) => {
     return (
         <StyledHeader>
-            <figure>
-                <Img src={logo} alt='' />
-            </figure>
+            <Link to='/'>
+                <figure>
+                    <Img src={logo} alt='' />
+                </figure>
+            </Link>
             <div>{children}</div>
         </StyledHeader>
     );

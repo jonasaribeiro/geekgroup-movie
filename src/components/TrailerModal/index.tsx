@@ -8,7 +8,6 @@ interface Props {
 
 export const TrailerModal = ({ trailer, setShowTrailerModal }: Props) => {
     const modalRef = useRef<HTMLDivElement>(null);
-
     const handleClickOutside = (event: MouseEvent) => {
         if (
             modalRef.current &&
@@ -19,7 +18,7 @@ export const TrailerModal = ({ trailer, setShowTrailerModal }: Props) => {
     };
 
     useEffect(() => {
-        document.addEventListener('mousedown', handleClickOutside);
+        document.addEventListener('mousedown', handleClickOutside, { passive: true });
         return () => {
             document.removeEventListener('mousedown', handleClickOutside);
         };

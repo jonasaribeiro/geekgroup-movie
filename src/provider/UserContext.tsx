@@ -43,36 +43,35 @@ interface iUserContext {
     user: iUser;
     loading: boolean;
     setUser: React.Dispatch<React.SetStateAction<iUser>>;
-    savedMovies: iMovie[];
-    setSavedMovies: React.Dispatch<React.SetStateAction<iMovie[]>>;
     UserRegister: (data: TRegisterFormData) => Promise<void>;
     loginModal: boolean;
     setLoginModal: React.Dispatch<React.SetStateAction<boolean>>;
     closeModal: () => void;
     userLogin: (data: ILoginFormValues) => Promise<void>;
-    moviesPoster: IPosterMovie[];
-    carouselImage: IPosterMovie[];
+    handleLogOff: () => void;
 }
 
 export const UserContext = createContext({} as iUserContext);
 
 export const UserProvider = ({ children }: { children: ReactNode }) => {
-    const [user, setUser] = useState({} as iUser);
-    const [savedMovies, setSavedMovies] = useState({} as iMovie[]);
-    const [loading, setLoading] = useState(false);
-    const [moviesPoster, setMoviesPosters] = useState<IPosterMovie[]>([]);
-    const [carouselImage, setCarouselImage] = useState<IPosterMovie[]>([]);
-    const [loginModal, setLoginModal] = useState<false | true>(false);
-
     const navigate = useNavigate();
 
+    const [user, setUser] = useState({} as iUser);
+    const [loginModal, setLoginModal] = useState<false | true>(false);
+    const [loading, setLoading] = useState(false);
     const closeModal = () => {
         setLoginModal(!loginModal);
     };
 
-    // const handleLogOff = () => {
-    //     setUser({});
-    // };
+    const handleLogOff = () => {
+        setUser({
+            accessToken: '',
+            user: { email: '', name: '', id: 0, img: '' },
+        });
+        localStorage.setItem('@GeekGroup', '');
+        navigate('/');
+        toast.success('Deslogado com sucesso!');
+    };
 
     const UserRegister = async (data: TRegisterFormData): Promise<void> => {
         try {
@@ -108,52 +107,6 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
     };
 
     useEffect(() => {
-        const getSavedMovies = () => {
-            jsonApi
-                .get(`/savedMovies?userId=${user.user.id}`, {
-                    headers: { Authorization: `Bearer ${user.accessToken}` },
-                })
-                .then((data) => setSavedMovies(data.data))
-                .catch((err) =>
-                    toast.error(
-                        `Ocorreu um erro ao tentar recuperar seus filmes salvos: ${err}`
-                    )
-                );
-        };
-        if (user.accessToken) {
-            getSavedMovies();
-        }
-    }, [user]);
-
-    useEffect(() => {
-        const loadingPoster = async () => {
-            try {
-                const response = await movieApi.get(
-                    '3/movie/top_rated?api_key=e00895bb778a01db49aec7a6456aea75&language=en-US&page=1'
-                );
-                setMoviesPosters(response.data.results);
-            } catch (error) {
-                console.log(error);
-            }
-        };
-        loadingPoster();
-    }, []);
-
-    useEffect(() => {
-        const loadingImageCarousel = async () => {
-            try {
-                const response = await movieApi.get(
-                    '/3/trending/all/day?api_key=e00895bb778a01db49aec7a6456aea75'
-                );
-                setCarouselImage(response.data.results);
-            } catch (error) {
-                console.log(error);
-            }
-        };
-        loadingImageCarousel();
-    }, []);
-
-    useEffect(() => {
         const localStorageCheck = () => {
             const temp = localStorage.getItem('@GeekGroup');
             if (temp) {
@@ -163,22 +116,17 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
         localStorageCheck();
     }, []);
 
-    console.log(user);
-
     return (
         <UserContext.Provider
             value={{
+                handleLogOff,
                 user,
                 setUser,
                 loginModal,
                 setLoginModal,
                 closeModal,
-                savedMovies,
-                setSavedMovies,
                 UserRegister,
                 userLogin,
-                moviesPoster,
-                carouselImage,
                 loading,
             }}
         >

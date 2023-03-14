@@ -36,7 +36,7 @@ export const StyledMoviePage = styled.div`
         }
     }
     main {
-        margin-top: 89px;
+        margin-top: 120px;
         background-color: #000000;
         width: 100%;
         height: 100%;

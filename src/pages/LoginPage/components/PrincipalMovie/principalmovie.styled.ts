@@ -12,4 +12,5 @@ export const MovieImg = styled.img`
     height: 100%;
     width: 100%;
     border-radius: 20px;
+    cursor: pointer;
 `;

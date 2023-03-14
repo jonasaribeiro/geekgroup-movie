@@ -4,7 +4,7 @@ import { SubmitHandler, useForm } from 'react-hook-form';
 import * as yup from 'yup';
 import { FormModal } from '../../../pages/LandingPage/components/loginModal.styled';
 import { UserContext } from '../../../provider/UserContext';
-import { Input } from '../../input/input';
+import { Input } from '../../Input/input';
 import { ScaleLoader } from 'react-spinners';
 import { Link } from 'react-router-dom';
 
@@ -55,7 +55,7 @@ export const LoginForm = () => {
                     <Link to='/register'>Clique aqui</Link>
                 </span>
             </p>
-            <button type='submit' disabled={loading ? true : false}>
+            <button type='submit'  disabled={loading ? true : false}>
                 {loading ? (
                     <ScaleLoader
                         color={'#F8F9FA'}
@@ -65,7 +65,7 @@ export const LoginForm = () => {
                 ) : (
                     'Entrar'
                 )}
-            </button>
+            </button >
             <button onClick={() => closeModal()}>Sair</button>
         </FormModal>
     );
