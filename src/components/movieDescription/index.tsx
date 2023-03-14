@@ -5,6 +5,7 @@ import { handleSaveMovie, movieApi, theMovieToken } from '../../services/api';
 import { UserContext } from '../../provider/UserContext';
 import { TrailerModal } from '../TrailerModal';
 import { DescriptionContext } from '../../provider/DescriptionContext';
+import { MoviesContext } from '../../provider/MoviesContext';
 
 interface imovieId {
     movieId: number;
@@ -21,6 +22,7 @@ interface imovieDescription {
 export const MovieDescription = ({ movieId }: imovieId) => {
     const { minuteToHour, returnImg } = useContext(DescriptionContext);
     const { user } = useContext(UserContext);
+    const { savedMovies, setSavedMovies } = useContext(MoviesContext);
     const [trailerLink, setTrailerLink] = useState<string | null>('');
     const [showTrailerModal, setShowTrailerModal] = useState(false);
     const [movieDescription, setMovieDescription] = useState<imovieDescription>(
@@ -76,12 +78,20 @@ export const MovieDescription = ({ movieId }: imovieId) => {
         getMovieTrailer();
     }, []);
 
+    console.log(savedMovies);
+
     return (
         <StyledMovieDescription>
             <div className='title'>
                 <h2>{movieDescription.title}</h2>
                 <div
-                    onClick={() => handleSaveMovie(movieId, user)}
+                    onClick={() => {
+                        handleSaveMovie(movieId, user);
+                        setSavedMovies([
+                            ...savedMovies,
+                            { movieId: movieId, userId: user.user.id },
+                        ]);
+                    }}
                     className='saveButton'
                 >
                     <h2>Salvar</h2>

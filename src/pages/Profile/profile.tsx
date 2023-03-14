@@ -12,11 +12,12 @@ import { useContext } from 'react';
 import { UserContext } from '../../provider/UserContext';
 import { Container3 } from './profile.styled';
 import { Link } from 'react-router-dom';
+import { MoviesContext } from '../../provider/MoviesContext';
 
 export const ProfilePage = () => {
-    const { savedMovies, setSavedMovies, handleLogOff } =
-        useContext(UserContext);
-    console.log(savedMovies);
+    const { handleLogOff } = useContext(UserContext);
+    const { savedMovies, setSavedMovies } = useContext(MoviesContext);
+
     return (
         <>
             <Container1>
@@ -25,7 +26,9 @@ export const ProfilePage = () => {
                     <MovielistTitle>{`Filmes Salvos: ${savedMovies.length}`}</MovielistTitle>
                     <MovieList>
                         {savedMovies.length > 0 ? (
-                            savedMovies.map((e) => <MovieLI movieInfo={e} />)
+                            savedMovies.map((e) => (
+                                <MovieLI movieInfo={e} key={e.movieId} />
+                            ))
                         ) : (
                             <h3>
                                 Você não possui nenhum filme salvo em sua lista
