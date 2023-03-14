@@ -61,7 +61,8 @@ export const MoviesProvider = ({ children }: { children: ReactNode }) => {
     }
 
     const handleSaveMovie = async (movieId: number, user: iUser) => {
-        if (savedMovies.filter((e) => e.movieId !== movieId).length === 0) {
+        console.log(movieId);
+        if (savedMovies.filter((e) => e.movieId === movieId).length === 0) {
             const newSavedMovie = await jsonApi
                 .post(
                     '/savedMovies',
@@ -84,6 +85,7 @@ export const MoviesProvider = ({ children }: { children: ReactNode }) => {
                         `Ocorreu um erro ao tentar salvar o filme: ${err}`
                     )
                 );
+            console.log(newSavedMovie, savedMovies);
             setSavedMovies([...savedMovies, newSavedMovie]);
         } else {
             toast.error('Filme já salvo');
