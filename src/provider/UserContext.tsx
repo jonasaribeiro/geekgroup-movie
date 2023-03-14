@@ -52,6 +52,7 @@ interface iUserContext {
     userLogin: (data: ILoginFormValues) => Promise<void>;
     moviesPoster: IPosterMovie[];
     carouselImage: IPosterMovie[];
+    handleLogOff: () => void;
 }
 
 export const UserContext = createContext({} as iUserContext);
@@ -69,7 +70,13 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
     };
 
     const handleLogOff = () => {
-        setUser({});
+        setUser({
+            accessToken: '',
+            user: { email: '', name: '', id: 0, img: '' },
+        });
+        localStorage.setItem('@GeekGroup', '');
+        navigate('/');
+        toast.success('Deslogado com sucesso!');
     };
 
     const UserRegister = async (data: TRegisterFormData): Promise<void> => {
@@ -162,6 +169,7 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
     return (
         <UserContext.Provider
             value={{
+                handleLogOff,
                 user,
                 setUser,
                 loginModal,
