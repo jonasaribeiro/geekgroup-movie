@@ -4,7 +4,7 @@ import { UserContext } from '../../../../provider/UserContext';
 
 export const ProfileInfo = () => {
     const { user } = useContext(UserContext);
-
+console.log(user.user.img)
     return (
         <Container2>
             <ProfileImg src={user.user.img} />

@@ -49,4 +49,5 @@ export const ButtonLogout = styled.button`
     color: white;
     background-color: #414246;
     border-radius: 8px;
+    margin-left: 30px;
 `;

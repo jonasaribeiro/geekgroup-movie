@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { redirect, useNavigate } from 'react-router-dom';
 import { Header } from '../../components/header/header';
 import {
     AcessButton,
@@ -11,6 +12,7 @@ import {
 import logo from '../../assets/img/logo.svg';
 
 export const LandingPage = () => {
+    const navigate=useNavigate()
     return (
         <>
             <MainCointainer>

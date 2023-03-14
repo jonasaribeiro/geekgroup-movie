@@ -6,12 +6,14 @@ export const StyledPostCommentForm = styled.form`
         font-size: 16px;
         font-weight: 400;
         margin-bottom: 15px;
+        font-family: 'Roboto', sans-serif;
     }
     .postCommentDiv {
         display: flex;
         flex-direction: column;
         align-items: center;
         textarea {
+            font-family: 'Inter', sans-serif;
             width: 100%;
             height: 100px;
             max-height: 100px;
@@ -26,6 +28,7 @@ export const StyledPostCommentForm = styled.form`
             color: #ffffff;
         }
         button {
+            font-family: 'Inter', sans-serif;
             cursor: pointer;
             width: 98px;
             height: 48px;
