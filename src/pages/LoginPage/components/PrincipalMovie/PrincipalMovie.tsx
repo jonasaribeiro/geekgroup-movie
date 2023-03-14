@@ -5,7 +5,7 @@ import Carousel from 'react-bootstrap/Carousel';
 import { MoviesContext } from '../../../../provider/MoviesContext';
 
 export const PrincipalMovie = () => {
-    const { carouselImage } = useContext(MoviesContext);
+    const { carouselImage, saibaMaisClick } = useContext(MoviesContext);
 
     return (
         <ContainerMovie>
