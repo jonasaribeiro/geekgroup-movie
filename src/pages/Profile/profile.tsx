@@ -10,9 +10,12 @@ import { ProfileInfo } from './components/ProfileInfo/ProfileInfo';
 import { MovieLI } from './components/MovieLI/MovieLi';
 import { useContext } from 'react';
 import { UserContext } from '../../provider/UserContext';
+import { Container3 } from './profile.styled';
+import { Link } from 'react-router-dom';
 
 export const ProfilePage = () => {
-    const { savedMovies, setSavedMovies } = useContext(UserContext);
+    const { savedMovies, setSavedMovies, handleLogOff } =
+        useContext(UserContext);
 
     return (
         <>
@@ -21,17 +24,25 @@ export const ProfilePage = () => {
                     <ProfileInfo />
                     <MovielistTitle>Filmes Salvos: 15</MovielistTitle>
                     <MovieList>
-                        <MovieLI />
-                        <MovieLI />
-                        <MovieLI />
-                        <MovieLI />
-                        <MovieLI />
-                        <MovieLI />
+                        {savedMovies.length > 0 ? (
+                            savedMovies.map((e) => <MovieLI movieInfo={e} />)
+                        ) : (
+                            <h3>
+                                Você não possui nenhum filme salvo em sua lista
+                            </h3>
+                        )}
                     </MovieList>
                 </Main>
             </Container1>
             <Header>
-                <ButtonLogout type='button'>Logout</ButtonLogout>
+                <Container3>
+                    <Link to='/'>
+                        <ButtonLogout type='button'>Início</ButtonLogout>
+                    </Link>
+                    <ButtonLogout onClick={handleLogOff} type='button'>
+                        Logout
+                    </ButtonLogout>
+                </Container3>
             </Header>
         </>
     );
