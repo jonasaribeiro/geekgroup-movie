@@ -51,4 +51,5 @@ export const LiMovies = styled.li`
 export const PosterImage = styled.img`
     width: 100%;
     height: 430px;
+    border-radius: 24px;
 `;

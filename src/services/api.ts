@@ -1,5 +1,6 @@
 import axios from 'axios';
-import { iUser, iMovie } from '../provider/UserContext';
+import { iUser } from '../provider/UserContext';
+import { iMovie } from '../provider/MoviesContext';
 import { toast } from 'react-toastify';
 
 export const jsonApi = axios.create({
