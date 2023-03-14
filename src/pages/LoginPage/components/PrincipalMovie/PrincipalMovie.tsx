@@ -14,6 +14,7 @@ export const PrincipalMovie = () => {
                     <Carousel.Item>
                         {' '}
                         <MovieImg
+                       
                             src={`https://image.tmdb.org/t/p/original/${element.backdrop_path}`}
                             alt=''
                         />{' '}

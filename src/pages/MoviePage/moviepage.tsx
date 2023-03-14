@@ -17,8 +17,8 @@ export const MoviePage = () => {
                 <Header>
                     <div className='profileDiv'>
                         <div>
-                            {/* <img src={user.user.img} alt={user.user.name} />
-                            <Link to={'/profile'}>Profile</Link> */}
+                            <img src={user.user.img} alt={user.user.name} />
+                            <Link to={'/profile'}>Profile</Link>
                         </div>
 
                         <Link to={'/'}>Voltar</Link>

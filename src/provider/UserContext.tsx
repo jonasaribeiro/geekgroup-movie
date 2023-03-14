@@ -53,6 +53,7 @@ interface iUserContext {
     moviesPoster: IPosterMovie[];
     carouselImage: IPosterMovie[];
     handleLogOff: () => void;
+    saibaMaisClick:(movieId:number)=>void;
 }
 
 export const UserContext = createContext({} as iUserContext);
@@ -78,6 +79,15 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
         navigate('/');
         toast.success('Deslogado com sucesso!');
     };
+
+    function saibaMaisClick(movieId:number){
+        if(user.accessToken!==''){
+            navigate(`/movieinfo/${movieId}`)
+        }
+        else{
+            navigate(`/landingPage`)
+        }
+    }
 
     const UserRegister = async (data: TRegisterFormData): Promise<void> => {
         try {
@@ -132,7 +142,7 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
         const loadingPoster = async () => {
             try {
                 const response = await movieApi.get(
-                    '3/movie/top_rated?api_key=e00895bb778a01db49aec7a6456aea75&language=en-US&page=1'
+                    '/movie/top_rated?api_key=e00895bb778a01db49aec7a6456aea75&language=en-US&page=1'
                 );
                 setMoviesPosters(response.data.results);
             } catch (error) {
@@ -146,7 +156,7 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
         const loadingImageCarousel = async () => {
             try {
                 const response = await movieApi.get(
-                    '/3/trending/all/day?api_key=e00895bb778a01db49aec7a6456aea75'
+                    '/trending/all/day?api_key=e00895bb778a01db49aec7a6456aea75'
                 );
                 setCarouselImage(response.data.results);
             } catch (error) {
@@ -182,6 +192,7 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
                 moviesPoster,
                 carouselImage,
                 loading,
+                saibaMaisClick
             }}
         >
             {children}

@@ -23,7 +23,7 @@ export const TrailerModal = ({ trailer, setShowTrailerModal }: Props) => {
             document.removeEventListener('mousedown', handleClickOutside);
         };
     }, []);
-
+console.log(trailer)
     return trailer ? (
         <StyledModalWrapper className='ModalWrapper'>
             <div className='modal' ref={modalRef}>
