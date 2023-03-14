@@ -13,7 +13,7 @@ export const TopMovies = () => {
     return (
         <>
             {moviesPoster.map((element: any) => (
-                <LiMovies key={element.id}>
+                <LiMovies id={element.id}>
                     <>
                         {user && (
                             <img

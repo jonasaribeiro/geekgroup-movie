@@ -126,6 +126,7 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
                 UserRegister,
                 userLogin,
                 loading,
+                saibaMaisClick
             }}
         >
             {children}

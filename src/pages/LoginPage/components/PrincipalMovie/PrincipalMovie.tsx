@@ -15,6 +15,7 @@ export const PrincipalMovie = () => {
                         <MovieImg
                             src={`https://image.tmdb.org/t/p/original/${element.backdrop_path}`}
                             alt=''
+                            onClick={() => saibaMaisClick(element.id)}
                         />
                     </Carousel.Item>
                 ))}
