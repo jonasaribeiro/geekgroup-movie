@@ -7,7 +7,7 @@ export const AcessButton = styled.button`
     background-color: #414246;
     border-radius: 8px;
 
-    a{
+    a {
         color: white;
         text-decoration: none;
     }
@@ -54,7 +54,7 @@ export const SubTitleImg = styled.p`
     line-height: 100px;
     font-size: 30px;
     font-weight: 600;
-    color: white
+    color: white;
 `;
 export const ButtonRegister = styled.button`
     width: 200px;
@@ -65,7 +65,7 @@ export const ButtonRegister = styled.button`
     font-size: 21px;
     margin-bottom: 156px;
 
-    a{
+    a {
         color: white;
         text-decoration: none;
     }

@@ -31,7 +31,7 @@ export const ProfileButton = styled.button`
     margin-right: 30px;
     width: 80px;
 
-    a{
+    a {
         color: white;
         text-decoration: none;
     }
@@ -55,8 +55,6 @@ export const MainCointainer = styled.div`
     justify-content: center;
     align-items: center;
     flex-direction: column;
-
-
 `;
 
 export const DivContainer = styled.main`
@@ -88,5 +86,5 @@ export const DivButtons = styled.div`
         flex-direction: column;
         gap: 30px;
         margin-bottom: 80px;
-        }
-`
+    }
+`;
