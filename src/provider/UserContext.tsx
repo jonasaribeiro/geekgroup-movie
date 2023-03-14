@@ -59,7 +59,7 @@ export const UserContext = createContext({} as iUserContext);
 
 export const UserProvider = ({ children }: { children: ReactNode }) => {
     const [user, setUser] = useState({} as iUser);
-    const [savedMovies, setSavedMovies] = useState({} as iMovie[]);
+    const [savedMovies, setSavedMovies] = useState([] as iMovie[]);
     const [loading, setLoading] = useState(false);
     const [moviesPoster, setMoviesPosters] = useState<IPosterMovie[]>([]);
     const [carouselImage, setCarouselImage] = useState<IPosterMovie[]>([]);
@@ -134,7 +134,7 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
         const loadingPoster = async () => {
             try {
                 const response = await movieApi.get(
-                    '3/movie/top_rated?api_key=e00895bb778a01db49aec7a6456aea75&language=en-US&page=1'
+                    'movie/top_rated?api_key=e00895bb778a01db49aec7a6456aea75&language=en-US&page=1'
                 );
                 setMoviesPosters(response.data.results);
             } catch (error) {
@@ -148,7 +148,7 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
         const loadingImageCarousel = async () => {
             try {
                 const response = await movieApi.get(
-                    '/3/trending/all/day?api_key=e00895bb778a01db49aec7a6456aea75'
+                    '/trending/all/day?api_key=e00895bb778a01db49aec7a6456aea75'
                 );
                 setCarouselImage(response.data.results);
             } catch (error) {

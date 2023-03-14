@@ -30,4 +30,8 @@ export const Button2 = styled.button`
     border-radius: 10px;
 `;
 
-export const ImgPoster = styled.img``;
+export const ImgPoster = styled.img`
+    width: 166px;
+    height: 375px;
+    border-radius: 24px;
+`;
