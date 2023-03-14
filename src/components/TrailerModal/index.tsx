@@ -6,34 +6,12 @@ interface Props {
     setShowTrailerModal: (show: boolean) => void;
 }
 
-export const TrailerModal = ({ trailer, setShowTrailerModal }: Props) => {
-    const modalRef = useRef<HTMLDivElement>(null);
-    const handleClickOutside = (event: MouseEvent) => {
-        if (
-            modalRef.current &&
-            !modalRef.current.contains(event.target as Node)
-        ) {
-            setShowTrailerModal(false);
-        }
-    };
-
-    useEffect(() => {
-        document.addEventListener('mousedown', handleClickOutside, { passive: true });
-        return () => {
-            document.removeEventListener('mousedown', handleClickOutside);
-        };
-    }, []);
-
+export const TrailerModal = ({ trailer }: Props) => {
     return trailer ? (
-        <StyledModalWrapper className='ModalWrapper'>
-            <div className='modal' ref={modalRef}>
-                <button onClick={() => setShowTrailerModal(false)}>X</button>
-                <iframe
-                    src={`https://www.youtube.com/embed/${trailer}?autoplay=1`}
-                    title='Youtube video'
-                    allowFullScreen
-                ></iframe>
-            </div>
-        </StyledModalWrapper>
+        <StyledModalWrapper
+            src={`https://www.youtube.com/embed/${trailer}?autoplay=1`}
+            title='Youtube video'
+            allowFullScreen
+        ></StyledModalWrapper>
     ) : null;
 };

@@ -1,4 +1,4 @@
-import { redirect } from 'react-router-dom';
+import { redirect, useNavigate } from 'react-router-dom';
 import { Header } from '../../components/header/header';
 import {
     AcessButton,
@@ -11,10 +11,11 @@ import {
 } from './landingpage.styled';
 
 export const LandingPage = () => {
+    const navigate=useNavigate()
     return (
         <>
             <Header>
-                <AcessButton type='button' onClick={() => redirect('/login')}>
+                <AcessButton type='button' onClick={() => navigate('/login')}>
                     Acessar
                 </AcessButton>
             </Header>
@@ -29,7 +30,7 @@ export const LandingPage = () => {
                             <SubTitleImg>
                                 Não sabe o que assistir? Cadastre-se aqui!
                             </SubTitleImg>
-                            <ButtonRegister>Vamos lá?</ButtonRegister>
+                            <ButtonRegister onClick={()=>navigate('/register')}>Vamos lá?</ButtonRegister>
                         </DivImg>
                     </DivContainer>
                 </MainCointainer>

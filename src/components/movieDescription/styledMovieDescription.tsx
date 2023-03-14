@@ -11,18 +11,22 @@ export const StyledMovieDescription = styled.div`
         margin-bottom: 20px;
 
         h2 {
-            font-size: 18px;
+            font-size: 24px;
             color: #ffffff;
+            margin-bottom: 0px;
+            font-family: 'Roboto', sans-serif;
         }
 
         .saveButton {
             display: flex;
             align-items: center;
+
             gap: 10px;
             cursor: pointer;
             h2 {
+                margin-bottom: 0px;
                 color: #ffffff;
-                font-size: 16px;
+                font-size: 18px;
             }
         }
     }
@@ -52,6 +56,7 @@ export const StyledMovieDescription = styled.div`
             p {
                 color: #ffffff;
                 font-size: 16px;
+                font-family: 'Inter', sans-serif;
             }
             margin-bottom: 10px;
         }
@@ -70,8 +75,9 @@ export const StyledMovieDescription = styled.div`
             border: none;
             box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
             transition: 0.4s ease;
+            font-family: 'Inter', sans-serif;
         }
-        button:hover{
+        button:hover {
             opacity: 0.8;
         }
     }
@@ -86,8 +92,10 @@ export const StyledMovieDescription = styled.div`
         h2 {
             font-size: 24px;
             margin-bottom: 10px;
+            font-family: 'Roboto', sans-serif;
         }
         p {
+            font-family: 'Inter', sans-serif;
             width: 100%;
             height: max-content;
             text-align: center;

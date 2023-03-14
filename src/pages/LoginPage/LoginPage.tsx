@@ -13,9 +13,10 @@ import {
 } from './LoginPage.styled';
 import { toast } from 'react-toastify';
 import { Link } from 'react-router-dom';
+import { ButtonLogout } from '../Profile/profile.styled';
 
 export const LoginPage = () => {
-    const { user, loginModal, closeModal } = useContext(UserContext);
+    const { user, loginModal, closeModal,handleLogOff } = useContext(UserContext);
 
     return (
         <>
@@ -27,7 +28,7 @@ export const LoginPage = () => {
                 ) : (
                     <>
                         <Link to='/profile'>Profile</Link>
-                        <button>Logoff</button>
+                        <ButtonLogout onClick={()=>handleLogOff()}>Logoff</ButtonLogout>
                     </>
                 )}
             </Header>
