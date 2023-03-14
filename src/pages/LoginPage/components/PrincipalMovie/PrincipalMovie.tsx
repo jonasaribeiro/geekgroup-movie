@@ -5,7 +5,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 import Carousel from 'react-bootstrap/Carousel';
 
 export const PrincipalMovie = () => {
-    const { carouselImage } = useContext(UserContext);
+    const { carouselImage, saibaMaisClick } = useContext(UserContext);
 
     return (
         <ContainerMovie>
@@ -16,6 +16,7 @@ export const PrincipalMovie = () => {
                        
                             src={`https://image.tmdb.org/t/p/original/${element.backdrop_path}`}
                             alt=''
+                            onClick={() => saibaMaisClick(element.id)}
                         />
                     </Carousel.Item>
                 ))}

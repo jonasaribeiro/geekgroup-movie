@@ -10,7 +10,7 @@ export const TopMovies = () => {
     return (
         <>
             {moviesPoster.map((element: any) => (
-                <LiMovies key={element.id}>
+                <LiMovies id={element.id}>
                     <>
                         {user && <img className='blue-heart' src={heart} onClick={()=> handleSaveMovie(element.id, user)}/>}
                         <PosterImage

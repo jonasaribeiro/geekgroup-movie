@@ -65,7 +65,9 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
     const [moviesPoster, setMoviesPosters] = useState<IPosterMovie[]>([]);
     const [carouselImage, setCarouselImage] = useState<IPosterMovie[]>([]);
     const [loginModal, setLoginModal] = useState<false | true>(false);
+
     const navigate = useNavigate();
+    
     const closeModal = () => {
         setLoginModal(!loginModal);
     };
@@ -142,7 +144,7 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
         const loadingPoster = async () => {
             try {
                 const response = await movieApi.get(
-                    '3/movie/top_rated?api_key=e00895bb778a01db49aec7a6456aea75&language=en-US&page=1'
+                    '/movie/top_rated?api_key=e00895bb778a01db49aec7a6456aea75&language=en-US&page=1'
                 );
                 setMoviesPosters(response.data.results);
             } catch (error) {
@@ -192,6 +194,7 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
                 moviesPoster,
                 carouselImage,
                 loading,
+                saibaMaisClick
             }}
         >
             {children}
