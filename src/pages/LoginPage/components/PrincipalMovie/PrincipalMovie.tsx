@@ -1,11 +1,11 @@
 import { useContext } from 'react';
-import { UserContext } from '../../../../provider/UserContext';
 import { ContainerMovie, MovieImg } from './principalmovie.styled';
 import 'bootstrap/dist/css/bootstrap.css';
 import Carousel from 'react-bootstrap/Carousel';
+import { MoviesContext } from '../../../../provider/MoviesContext';
 
 export const PrincipalMovie = () => {
-    const { carouselImage, saibaMaisClick } = useContext(UserContext);
+    const { carouselImage } = useContext(MoviesContext);
 
     return (
         <ContainerMovie>
@@ -13,7 +13,6 @@ export const PrincipalMovie = () => {
                 {carouselImage.map((element: any) => (
                     <Carousel.Item id={element.id}>
                         <MovieImg
-                       
                             src={`https://image.tmdb.org/t/p/original/${element.backdrop_path}`}
                             alt=''
                             onClick={() => saibaMaisClick(element.id)}

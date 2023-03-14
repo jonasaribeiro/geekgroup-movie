@@ -8,10 +8,12 @@ import {
 import { UserContext, iMovie } from '../../../../provider/UserContext';
 import { useContext, useState, useEffect } from 'react';
 import { toast } from 'react-toastify';
+import { MoviesContext } from '../../../../provider/MoviesContext';
 
 export const MovieLI = ({ movieInfo }: { movieInfo: iMovie }) => {
     const navigate = useNavigate();
     const { user } = useContext(UserContext);
+    const { saibaMaisClick } = useContext(MoviesContext);
     const [poster, setPoster] = useState('');
 
     useEffect(() => {
@@ -33,7 +35,7 @@ export const MovieLI = ({ movieInfo }: { movieInfo: iMovie }) => {
         handleRemoveSavedMovie(movieInfo, user);
     };
     const handleClickMore = () => {
-        navigate(`/movieinfo/${movieInfo.movieId}`);
+        saibaMaisClick(movieInfo.movieId);
     };
 
     return poster ? (
