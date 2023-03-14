@@ -93,8 +93,8 @@ export const RegisterForm = () => {
                     register={register('password')}
                 />
                 <span
-                    title={showPassword ? 'mostrar senha' : 'esconder senha'}
                     className='lock_img--password'
+                    title={showPassword ? 'mostrar senha' : 'esconder senha'}
                     onClick={() => setShowPassword(!showPassword)}
                 >
                     {showPassword ? <BsFillLockFill /> : <BsFillUnlockFill />}

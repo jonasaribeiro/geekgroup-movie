@@ -70,13 +70,15 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
         setLoginModal(!loginModal);
     };
 
+    const handleLogOff = () => {
+        setUser({});
+    };
+
     const UserRegister = async (data: TRegisterFormData): Promise<void> => {
         try {
             setLoading(true);
             await jsonApi.post('/register', data);
             toast.success('Parabéns, cadastro realizado!');
-            console.log(data);
-            // navigate('/');
         } catch (error) {
             if (axios.isAxiosError(error)) {
                 console.error(error);
@@ -92,11 +94,8 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
             setLoading(true);
             const response = await jsonApi.post('/login', data);
             setUser(response.data);
-            localStorage.setItem('@TOKEN', response.data.accessToken);    
+            localStorage.setItem('@GeekGroup', JSON.stringify(response.data));
             toast.success('login realizado com sucesso!');
-            navigate('/profile')
-            console.log(response.data.user);
-            console.log(user)
         } catch (error) {
             if (axios.isAxiosError(error)) {
                 toast.error('Verifique os dados digitados.');
@@ -107,14 +106,9 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
     };
 
     useEffect(() => {
-        const getUser = () => {};
-        getUser();
-    }, []);
-
-    useEffect(() => {
         const getSavedMovies = () => {
             jsonApi
-                .get('/savedMovies', {
+                .get(`/savedMovies?userId=${user.user.id}`, {
                     headers: { Authorization: `Bearer ${user.accessToken}` },
                 })
                 .then((data) => setSavedMovies(data.data))
@@ -156,6 +150,18 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
         };
         loadingImageCarousel();
     }, []);
+
+    useEffect(() => {
+        const localStorageCheck = () => {
+            const temp = localStorage.getItem('@GeekGroup');
+            if (temp) {
+                setUser(JSON.parse(temp));
+            }
+        };
+        localStorageCheck();
+    }, []);
+
+    console.log(user);
 
     return (
         <UserContext.Provider
