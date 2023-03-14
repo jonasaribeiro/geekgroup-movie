@@ -3,7 +3,11 @@ import logo from '../../assets/img/logo.svg';
 import { Img, StyledHeader } from './header.styled';
 import { Link } from 'react-router-dom';
 
-export const Header = ({ children }: { children: ReactNode }) => {
+interface TChildrenProps {
+    children: ReactNode;
+}
+
+export const Header = ({ children }: TChildrenProps) => {
     return (
         <StyledHeader>
             <Link to='/'>

@@ -5,11 +5,13 @@ import { UserContext } from '../../provider/UserContext';
 export const ProtectedPages = () => {
     const { user } = useContext(UserContext);
     const navigate = useNavigate();
+
+    console.log(user);
+
     useEffect(() => {
-        if (user.id) {
+        if (!localStorage.getItem('@GeekGroup')) {
             navigate('/');
         }
     }, [user]);
-
-    return user.id ? <Outlet /> : null;
+    return user.accessToken ? <Outlet /> : null;
 };

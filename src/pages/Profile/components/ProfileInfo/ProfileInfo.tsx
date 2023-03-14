@@ -1,5 +1,4 @@
 import { Container2, StyledText, ProfileImg } from './ProfileInfo.styled';
-import profileImg from '../../../.BaseTest/profileimg.svg';
 import { useContext } from 'react';
 import { UserContext } from '../../../../provider/UserContext';
 
@@ -8,9 +7,9 @@ export const ProfileInfo = () => {
 
     return (
         <Container2>
-            <ProfileImg src={profileImg} alt='' />
-            <StyledText>Nome: Jucelinio biruleibe silve</StyledText>
-            <StyledText>Email: jucelinoMatador@gmail.com</StyledText>
+            <ProfileImg src={user.user.img} />
+            <StyledText>{user.user.name}</StyledText>
+            <StyledText>{user.user.email}</StyledText>
         </Container2>
     );
 };

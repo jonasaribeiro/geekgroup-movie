@@ -1,19 +1,47 @@
-import { ReactNode, createContext, useState } from 'react';
+import { ReactNode, createContext, useEffect, useState } from 'react';
+import { jsonApi, movieApi } from '../services/api';
+import { toast } from 'react-toastify';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+import { TRegisterFormData } from '../components/form/RegisterForm/register';
+import { ILoginFormValues } from '../components/form/LoginForm/LoginForm';
 
-interface iUser {
-    name: string;
-    email: string;
-    img: string;
-    id: string;
+export interface iUser {
+    accessToken: string;
+    user: {
+        email: string;
+        name: string;
+        img: string;
+        id: number;
+    };
 }
 
-interface iMovie {
-    title: string;
+export interface iMovie {
+    movieId: Number;
+    userId: Number;
     id: Number;
+}
+
+export interface IPosterMovie {
+    adult?: boolean;
+    backdrop_path?: string;
+    genre_ids?: Number;
+    id?: Number;
+    original_language?: string;
+    original_title?: string;
+    overview?: string;
+    popularity?: Number;
+    poster_path?: string;
+    release_date?: string;
+    title?: string;
+    video?: boolean;
+    vote_average?: Number;
+    vote_count?: Number;
 }
 
 interface iUserContext {
     user: iUser;
+    loading: boolean;
     setUser: React.Dispatch<React.SetStateAction<iUser>>;
     savedMovies: iMovie[];
     setSavedMovies: React.Dispatch<React.SetStateAction<iMovie[]>>;
