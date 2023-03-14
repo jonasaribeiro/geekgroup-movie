@@ -7,7 +7,8 @@ import { MoviesContext } from '../../../../provider/MoviesContext';
 
 export const TopMovies = () => {
     const { user } = useContext(UserContext);
-    const { moviesPoster, saibaMaisClick } = useContext(MoviesContext);
+    const { moviesPoster, saibaMaisClick, savedMovies, setSavedMovies } =
+        useContext(MoviesContext);
 
     return (
         <>
@@ -18,9 +19,16 @@ export const TopMovies = () => {
                             <img
                                 className='blue-heart'
                                 src={heart}
-                                onClick={() =>
-                                    handleSaveMovie(element.id, user)
-                                }
+                                onClick={() => {
+                                    handleSaveMovie(element.id, user);
+                                    setSavedMovies([
+                                        ...savedMovies,
+                                        {
+                                            movieId: element.id,
+                                            userId: user.user.id,
+                                        },
+                                    ]);
+                                }}
                             />
                         )}
                         <PosterImage
