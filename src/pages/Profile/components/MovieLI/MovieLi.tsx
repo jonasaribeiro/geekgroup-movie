@@ -16,12 +16,6 @@ export const MovieLI = ({ movieInfo }: { movieInfo: iMovie }) => {
 
     useEffect(() => {
         const handlePoster = async () => {
-            console.log(poster);
-
-            console.log(
-                `/movie/${movieInfo.movieId}?api_key=c9b2065569ad44bfd816636695333878&language=pt-BR`
-            );
-
             let temp = await movieApi
                 .get(
                     `/movie/${movieInfo.movieId}?api_key=c9b2065569ad44bfd816636695333878&language=pt-BR`
@@ -39,7 +33,7 @@ export const MovieLI = ({ movieInfo }: { movieInfo: iMovie }) => {
         handleRemoveSavedMovie(movieInfo, user);
     };
     const handleClickMore = () => {
-        navigate(`/`);
+        navigate(`/movieinfo/${movieInfo.movieId}`);
     };
 
     return poster ? (
