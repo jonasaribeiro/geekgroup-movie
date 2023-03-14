@@ -16,8 +16,6 @@ import { Link } from 'react-router-dom';
 
 export const LoginPage = () => {
     const { user, loginModal, closeModal } = useContext(UserContext);
-    console.log(user);
-
     return (
         <>
             <Header>

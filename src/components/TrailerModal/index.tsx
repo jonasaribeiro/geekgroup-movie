@@ -8,7 +8,6 @@ interface Props {
 
 export const TrailerModal = ({ trailer, setShowTrailerModal }: Props) => {
     const modalRef = useRef<HTMLDivElement>(null);
-
     const handleClickOutside = (event: MouseEvent) => {
         if (
             modalRef.current &&

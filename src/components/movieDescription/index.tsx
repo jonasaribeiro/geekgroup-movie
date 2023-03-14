@@ -38,6 +38,7 @@ export const MovieDescription = ({ movieId }: imovieId) => {
                         },
                     }
                 );
+                console.log(request);
                 const { title, runtime, overview, release_date, poster_path } =
                     request.data;
                 setMovieDescription({

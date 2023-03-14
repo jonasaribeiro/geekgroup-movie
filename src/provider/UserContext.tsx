@@ -63,9 +63,7 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
     const [moviesPoster, setMoviesPosters] = useState<IPosterMovie[]>([]);
     const [carouselImage, setCarouselImage] = useState<IPosterMovie[]>([]);
     const [loginModal, setLoginModal] = useState<false | true>(false);
-
     const navigate = useNavigate();
-
     const closeModal = () => {
         setLoginModal(!loginModal);
     };
@@ -160,8 +158,6 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
         };
         localStorageCheck();
     }, []);
-
-    console.log(user);
 
     return (
         <UserContext.Provider
