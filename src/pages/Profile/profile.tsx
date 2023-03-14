@@ -16,7 +16,7 @@ import { Link } from 'react-router-dom';
 export const ProfilePage = () => {
     const { savedMovies, setSavedMovies, handleLogOff } =
         useContext(UserContext);
-
+    console.log(savedMovies);
     return (
         <>
             <Container1>
