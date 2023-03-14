@@ -11,7 +11,7 @@ export const PrincipalMovie = () => {
         <ContainerMovie>
             <Carousel>
                 {carouselImage.map((element: any) => (
-                    <Carousel.Item>
+                    <Carousel.Item key={element}>
                         {' '}
                         <MovieImg
                        

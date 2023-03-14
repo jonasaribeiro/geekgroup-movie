@@ -18,12 +18,12 @@ export const TrailerModal = ({ trailer, setShowTrailerModal }: Props) => {
     };
 
     useEffect(() => {
-        document.addEventListener('mousedown', handleClickOutside);
+        document.addEventListener('mousedown', handleClickOutside, { passive: true });
         return () => {
             document.removeEventListener('mousedown', handleClickOutside);
         };
     }, []);
-console.log(trailer)
+
     return trailer ? (
         <StyledModalWrapper className='ModalWrapper'>
             <div className='modal' ref={modalRef}>

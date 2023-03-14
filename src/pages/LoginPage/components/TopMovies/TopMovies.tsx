@@ -9,7 +9,7 @@ export const TopMovies = () => {
     return (
         <>
             {moviesPoster.map((element: any) => (
-                <LiMovies id={element.id}>
+                <LiMovies id={element.id} key={element.id}>
                     <>
                         {user && <img className='blue-heart' src={heart} />}
                         <PosterImage
