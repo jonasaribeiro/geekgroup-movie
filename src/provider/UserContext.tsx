@@ -53,27 +53,41 @@ interface iUserContext {
     moviesPoster: IPosterMovie[];
     carouselImage: IPosterMovie[];
     handleLogOff: () => void;
+    saibaMaisClick:(movieId:number)=>void;
 }
 
 export const UserContext = createContext({} as iUserContext);
 
 export const UserProvider = ({ children }: { children: ReactNode }) => {
     const [user, setUser] = useState({} as iUser);
-    const [savedMovies, setSavedMovies] = useState({} as iMovie[]);
+    const [savedMovies, setSavedMovies] = useState([] as iMovie[]);
     const [loading, setLoading] = useState(false);
     const [moviesPoster, setMoviesPosters] = useState<IPosterMovie[]>([]);
     const [carouselImage, setCarouselImage] = useState<IPosterMovie[]>([]);
     const [loginModal, setLoginModal] = useState<false | true>(false);
-
     const navigate = useNavigate();
-
     const closeModal = () => {
         setLoginModal(!loginModal);
     };
 
     const handleLogOff = () => {
-        setUser({});
+        setUser({
+            accessToken: '',
+            user: { email: '', name: '', id: 0, img: '' },
+        });
+        localStorage.setItem('@GeekGroup', '');
+        navigate('/');
+        toast.success('Deslogado com sucesso!');
     };
+
+    function saibaMaisClick(movieId:number){
+        if(user.accessToken!==''){
+            navigate(`/movieinfo/${movieId}`)
+        }
+        else{
+            navigate(`/landingPage`)
+        }
+    }
 
     const UserRegister = async (data: TRegisterFormData): Promise<void> => {
         try {
@@ -128,7 +142,7 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
         const loadingPoster = async () => {
             try {
                 const response = await movieApi.get(
-                    '/movie/top_rated?api_key=e00895bb778a01db49aec7a6456aea75&language=en-US&page=1'
+                    '3/movie/top_rated?api_key=e00895bb778a01db49aec7a6456aea75&language=en-US&page=1'
                 );
                 setMoviesPosters(response.data.results);
             } catch (error) {
@@ -162,11 +176,10 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
         localStorageCheck();
     }, []);
 
-    console.log(user);
-
     return (
         <UserContext.Provider
             value={{
+                handleLogOff,
                 user,
                 setUser,
                 loginModal,
@@ -179,7 +192,6 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
                 moviesPoster,
                 carouselImage,
                 loading,
-                handleLogOff
             }}
         >
             {children}

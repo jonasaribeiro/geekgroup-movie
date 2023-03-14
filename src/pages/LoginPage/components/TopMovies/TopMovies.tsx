@@ -5,7 +5,7 @@ import heart from '../../../../assets/img/blueHeart.svg';
 import { handleSaveMovie } from '../../../../services/api';
 
 export const TopMovies = () => {
-    const { moviesPoster, user } = useContext(UserContext);
+    const { moviesPoster, user,saibaMaisClick } = useContext(UserContext);
 
     return (
         <>
@@ -17,7 +17,7 @@ export const TopMovies = () => {
                             src={`https://image.tmdb.org/t/p/original/${element.poster_path}`}
                             alt=''
                         />
-                        {user && <button>Saiba mais</button>}
+                        {user && <button onClick={()=>saibaMaisClick(element.id)}>Saiba mais</button>}
                     </>
                 </LiMovies>
             ))}

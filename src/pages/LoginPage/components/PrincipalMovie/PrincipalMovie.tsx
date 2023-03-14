@@ -13,6 +13,7 @@ export const PrincipalMovie = () => {
                 {carouselImage.map((element: any) => (
                     <Carousel.Item id={element.id}>
                         <MovieImg
+                       
                             src={`https://image.tmdb.org/t/p/original/${element.backdrop_path}`}
                             alt=''
                         />

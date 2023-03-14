@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const Container1 = styled.div`
-    padding-top: 100px;
+    padding-top: 160px;
     width: 100vw;
     min-height: 100vh;
     background-color: black;
@@ -9,6 +9,11 @@ export const Container1 = styled.div`
     justify-content: center;
     align-items: center;
     flex-direction: column;
+`;
+
+export const Container3 = styled.div`
+    display: flex;
+    gap: 10px;
 `;
 
 export const Main = styled.main`

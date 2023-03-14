@@ -34,6 +34,7 @@ export const CommentForm = () => {
     const {
         register,
         handleSubmit,
+        reset,
         formState: { errors },
     } = useForm<ipostComment>({
         resolver: yupResolver(schema),
@@ -69,6 +70,7 @@ export const CommentForm = () => {
 
     const onSubmit: SubmitHandler<ipostComment> = (data) => {
         postComment(data, user, id);
+        reset()
     };
 
     return (

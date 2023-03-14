@@ -29,3 +29,9 @@ export const Button2 = styled.button`
     padding: 5px 10px;
     border-radius: 10px;
 `;
+
+export const ImgPoster = styled.img`
+    width: 166px;
+    height: 375px;
+    border-radius: 24px;
+`;
