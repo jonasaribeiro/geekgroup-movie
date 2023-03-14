@@ -34,7 +34,7 @@ export interface iMovie {
 }
 
 interface iMoviesContext {
-    saibaMaisClick: (movieId: number) => void;
+    saibaMaisClick: (movieId: Number) => void;
     savedMovies: iMovie[];
     setSavedMovies: React.Dispatch<React.SetStateAction<iMovie[]>>;
     moviesPoster: IPosterMovie[];

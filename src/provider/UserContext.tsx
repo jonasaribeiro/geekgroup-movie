@@ -1,5 +1,5 @@
 import { ReactNode, createContext, useEffect, useState } from 'react';
-import { jsonApi, movieApi } from '../services/api';
+import { jsonApi } from '../services/api';
 import { toast } from 'react-toastify';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
@@ -14,29 +14,6 @@ export interface iUser {
         img: string;
         id: number;
     };
-}
-
-export interface iMovie {
-    movieId: Number;
-    userId: Number;
-    id: Number;
-}
-
-export interface IPosterMovie {
-    adult?: boolean;
-    backdrop_path?: string;
-    genre_ids?: Number;
-    id?: Number;
-    original_language?: string;
-    original_title?: string;
-    overview?: string;
-    popularity?: Number;
-    poster_path?: string;
-    release_date?: string;
-    title?: string;
-    video?: boolean;
-    vote_average?: Number;
-    vote_count?: Number;
 }
 
 interface iUserContext {
@@ -126,7 +103,6 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
                 UserRegister,
                 userLogin,
                 loading,
-                saibaMaisClick
             }}
         >
             {children}

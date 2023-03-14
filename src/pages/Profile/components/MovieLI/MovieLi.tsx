@@ -1,17 +1,12 @@
 import { Button1, Button2, ImgPoster, StyledLi } from './MovieLi.styled';
-import { useNavigate } from 'react-router-dom';
-import {
-    handleRemoveSavedMovie,
-    movieApi,
-    theMovieToken,
-} from '../../../../services/api';
-import { UserContext, iMovie } from '../../../../provider/UserContext';
+import { handleRemoveSavedMovie, movieApi } from '../../../../services/api';
+import { UserContext } from '../../../../provider/UserContext';
+import { iMovie } from '../../../../provider/MoviesContext';
 import { useContext, useState, useEffect } from 'react';
 import { toast } from 'react-toastify';
 import { MoviesContext } from '../../../../provider/MoviesContext';
 
 export const MovieLI = ({ movieInfo }: { movieInfo: iMovie }) => {
-    const navigate = useNavigate();
     const { user } = useContext(UserContext);
     const { saibaMaisClick, savedMovies, setSavedMovies } =
         useContext(MoviesContext);
