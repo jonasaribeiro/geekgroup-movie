@@ -16,7 +16,7 @@ import { MoviesContext } from '../../provider/MoviesContext';
 
 export const ProfilePage = () => {
     const { handleLogOff } = useContext(UserContext);
-    const { savedMovies, setSavedMovies } = useContext(MoviesContext);
+    const { savedMovies } = useContext(MoviesContext);
 
     return (
         <>
@@ -27,7 +27,7 @@ export const ProfilePage = () => {
                     <MovieList>
                         {savedMovies.length > 0 ? (
                             savedMovies.map((e) => (
-                                <MovieLI movieInfo={e} key={e.movieId} />
+                                <MovieLI movieInfo={e} key={`${e.movieId}`} />
                             ))
                         ) : (
                             <h3>

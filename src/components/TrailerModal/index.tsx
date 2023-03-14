@@ -18,7 +18,9 @@ export const TrailerModal = ({ trailer, setShowTrailerModal }: Props) => {
     };
 
     useEffect(() => {
-        document.addEventListener('mousedown', handleClickOutside, { passive: true });
+        document.addEventListener('mousedown', handleClickOutside, {
+            passive: true,
+        });
         return () => {
             document.removeEventListener('mousedown', handleClickOutside);
         };
