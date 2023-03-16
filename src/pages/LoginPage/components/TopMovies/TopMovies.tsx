@@ -16,20 +16,24 @@ export const TopMovies = () => {
                 <LiMovies id={element.id}>
                     <>
                         {user && (
-                            <img
+                            <div
+                                data-tooltip='Salvar'
                                 className='blue-heart'
-                                src={heart}
-                                onClick={() => {
-                                    handleSaveMovie(element.id, user);
-                                    setSavedMovies([
-                                        ...savedMovies,
-                                        {
-                                            movieId: element.id,
-                                            userId: user.user.id,
-                                        },
-                                    ]);
-                                }}
-                            />
+                            >
+                                <img
+                                    src={heart}
+                                    onClick={() => {
+                                        handleSaveMovie(element.id, user);
+                                        setSavedMovies([
+                                            ...savedMovies,
+                                            {
+                                                movieId: element.id,
+                                                userId: user.user.id,
+                                            },
+                                        ]);
+                                    }}
+                                />
+                            </div>
                         )}
                         <PosterImage
                             src={`https://image.tmdb.org/t/p/original/${element.poster_path}`}

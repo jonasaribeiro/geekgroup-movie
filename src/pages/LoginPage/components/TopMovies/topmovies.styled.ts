@@ -19,6 +19,26 @@ export const LiMovies = styled.li`
     position: relative;
     align-items: center;
 
+    [data-tooltip] {
+        position: relative;
+    }
+    [data-tooltip]:hover::before {
+        content: attr(data-tooltip);
+
+        position: absolute;
+        top: -0.5rem;
+        left: 50%;
+        width: fit-content;
+
+        background-color: black;
+        color: white;
+
+        padding: 0.25rem;
+        border-radius: 8px;
+
+        transform: translate(-50%, -100%);
+    }
+
     .blue-heart {
         position: absolute;
         top: 22px;

@@ -17,41 +17,52 @@ import {
 } from './LoginPage.styled';
 import { toast } from 'react-toastify';
 import { Link } from 'react-router-dom';
-import  logo  from '../../assets/img/logo.svg'
+import logo from '../../assets/img/logo.svg';
 
 export const LoginPage = () => {
-    const { user, loginModal, closeModal, handleLogOff } = useContext(UserContext);
+    const { user, loginModal, closeModal, handleLogOff } =
+        useContext(UserContext);
     console.log(user);
 
     return (
         <>
             <MainCointainer>
-            <Header>
-                {!user.accessToken ? (
-                    <LoginButton type='button' onClick={() => closeModal()}>
-                        Login
-                    </LoginButton>
-                ) : (
-                    <>
-                        <ProfileButton><Link to='/profile'>Profile</Link></ProfileButton>
-                        <LogOffButton onClick={() => handleLogOff()}>Logoff</LogOffButton>
-                    </>
-                )}
-            </Header>
-            <figure>
-                <img src={logo} alt="" />
-            </figure>
-            <DivButtons>
-            {!user.accessToken ? (
-                    <LoginButton type='button' onClick={() => closeModal()}>
-                        Login
-                    </LoginButton>
-                ) : (
-                    <>
-                        <ProfileButton><Link to='/profile'>Profile</Link></ProfileButton>
-                        <LogOffButton onClick={() => handleLogOff()}>Logoff</LogOffButton>
-                    </>)}
-            </DivButtons>
+                <Header>
+                    {!user.accessToken ? (
+                        <LoginButton type='button' onClick={() => closeModal()}>
+                            <CgLogIn />
+                            Login
+                        </LoginButton>
+                    ) : (
+                        <>
+                            <ProfileButton>
+                                <Link to='/profile'>Profile</Link>
+                            </ProfileButton>
+                            <LogOffButton onClick={() => handleLogOff()}>
+                                Logoff
+                            </LogOffButton>
+                        </>
+                    )}
+                </Header>
+                <figure>
+                    <img src={logo} alt='' />
+                </figure>
+                <DivButtons>
+                    {!user.accessToken ? (
+                        <LoginButton type='button' onClick={() => closeModal()}>
+                            Login
+                        </LoginButton>
+                    ) : (
+                        <>
+                            <ProfileButton>
+                                <Link to='/profile'>Profile</Link>
+                            </ProfileButton>
+                            <LogOffButton onClick={() => handleLogOff()}>
+                                Logoff
+                            </LogOffButton>
+                        </>
+                    )}
+                </DivButtons>
                 {loginModal && <LoginModal />}
                 <DivContainer>
                     <PrincipalMovie />
